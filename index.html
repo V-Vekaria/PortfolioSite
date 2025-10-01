@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Vishnu Vekaria — Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">Vishnu Vekaria</a>
+
+    <!-- Hamburger button -->
+    <button class="hamburger" id="menuBtn"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileMenu">
+      <span></span>
+    </button>
+
+    <!-- Desktop links -->
+    <nav aria-label="Primary">
+      <ul class="desktop">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portraits.html">Portraits</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <!-- Mobile panel -->
+      <div class="mobile" id="mobileMenu" hidden>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="portraits.html">Portraits</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Clickable overlay for mobile menu -->
+  <div id="navOverlay" class="nav-overlay" hidden></div>
+</header>
+
+<main class="section">
+  <div class="container hero-grid" style="display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:32px">
+    
+    <!-- Left: Text -->
+    <div>
+      <span class="pill">Portrait • Fashion • Editorial</span>
+      <h1>Hi, I’m Vishnu — photographer & model.</h1>
+      <p>Clean, modern portrait and fashion imagery for brands, agencies and creatives.</p>
+      <a href="portraits.html" class="btn primary">View Portraits</a>
+      <a href="contact.html" class="btn">Book a shoot</a>
+    </div>
+
+    <!-- Right: Image -->
+    <div>
+      <img src="images\HITU0180.JPG" alt="Vishnu posing for a fashion portrait">
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Vishnu Vekaria — All Rights Reserved</p>
+    <div class="social">
+      <a href="https://instagram.com/yourusername" target="_blank" aria-label="Instagram">
+        <i class="bi bi-instagram"></i>
+      </a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn">
+        <i class="bi bi-linkedin"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
+

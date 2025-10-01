@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Contact — Vishnu Vekaria</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">Vishnu Vekaria</a>
+
+    <!-- Hamburger button -->
+    <button class="hamburger" id="menuBtn"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileMenu">
+      <span></span>
+    </button>
+
+    <!-- Desktop links -->
+    <nav aria-label="Primary">
+      <ul class="desktop">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portraits.html">Portraits</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <!-- Mobile panel -->
+      <div class="mobile" id="mobileMenu" hidden>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="portraits.html">Portraits</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Clickable overlay for mobile menu -->
+  <div id="navOverlay" class="nav-overlay" hidden></div>
+</header>
+
+
+  <main class="section">
+    <div class="container contact-grid" style="display:grid;gap:20px;grid-template-columns:1fr 1fr">
+      <div class="card">
+        <img src="Images\3.jpg" alt="Behind the scenes (replace contact.jpg)">
+      </div>
+      <div class="card" style="padding:22px">
+        <h1>Contact</h1>
+        <p class="muted">For bookings and collaborations, send a message. I usually reply within 24 hours.</p>
+
+        <form id="contactForm" novalidate>
+          <label class="muted" for="name">Name</label>
+          <input id="name" name="name" required placeholder="Your name"/>
+
+          <label class="muted" for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com"/>
+
+          <label class="muted" for="date">Preferred date</label>
+          <input id="date" name="date" type="date"/>
+
+          <label class="muted" for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="Tell me about your shoot…"></textarea>
+
+          <button class="btn primary" type="submit">Send message</button>
+          <p id="formNote" class="muted"></p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Vishnu Vekaria — All Rights Reserved</p>
+    <div class="social">
+      <a href="https://instagram.com/yourusername" target="_blank" aria-label="Instagram">
+        <i class="bi bi-instagram"></i>
+      </a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn">
+        <i class="bi bi-linkedin"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+  <script type="module" src="script.js"></script>
+  <script>
+    // front-end only demo (no backend yet)
+    const form = document.getElementById('contactForm');
+    const note = document.getElementById('formNote');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      if(!form.checkValidity()){ note.textContent='Please fill in required fields.'; return; }
+      note.textContent = 'Thanks! Your message has been prepared. (Demo only)';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
