@@ -6,20 +6,6 @@
   <title>Portraits – Vishnu Vekaria</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <style>
-    /* Lightbox fade control */
-    .lightbox {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity .2s ease;
-    }
-    .lightbox.open {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
-  </style>
 </head>
 <body>
   <!-- ===== Header / Navbar ===== -->
@@ -74,7 +60,7 @@
         <a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" aria-label="Instagram">
           <i class="bi bi-instagram"></i>
         </a>
-        <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/vishnu-vekaria-y" target="_blank" aria-label="LinkedIn">
           <i class="bi bi-linkedin"></i>
         </a>
       </div>
@@ -101,13 +87,38 @@
 
       for (const p of items){
         const fig = document.createElement("figure");
+
         fig.innerHTML = `
-          <img src="${p.file}" alt="${p.alt || ''}" loading="lazy">
+          <img 
+            src="${p.preview}" 
+            data-full="${p.file}" 
+            alt="" 
+            class="lazy-blur" 
+            loading="lazy">
         `;
         gallery.appendChild(fig);
       }
 
+      // Trigger lightbox
       setupLightbox();
+
+      // Start blur-up swap
+      initBlurUp();
+    }
+
+    function initBlurUp(){
+      const imgs = document.querySelectorAll("img.lazy-blur");
+
+      imgs.forEach(img => {
+        const fullSrc = img.getAttribute("data-full");
+        const fullImg = new Image();
+        fullImg.src = fullSrc;
+
+        fullImg.onload = () => {
+          img.src = fullSrc;
+          img.classList.add("loaded");
+        };
+      });
     }
 
     // ===== Lightbox with swipe =====
