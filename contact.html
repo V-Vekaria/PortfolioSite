@@ -6,102 +6,164 @@
   <title>Contact — Vishnu Vekaria</title>
   <link rel="stylesheet" href="style.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="index.html">Vishnu Vekaria</a>
-
-    <!-- Hamburger button -->
-    <button class="hamburger" id="menuBtn"
-            aria-label="Open menu"
-            aria-expanded="false"
-            aria-controls="mobileMenu">
-      <span></span>
-    </button>
-
-    <!-- Desktop links -->
-    <nav aria-label="Primary">
+    <button class="hamburger" id="menuBtn"><span></span></button>
+    <nav>
       <ul class="desktop">
         <li><a href="index.html">Home</a></li>
         <li><a href="portraits.html">Portraits</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
-
-      <!-- Mobile panel -->
       <div class="mobile" id="mobileMenu" hidden>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="portraits.html">Portraits</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
       </div>
     </nav>
   </div>
-
-  <!-- Clickable overlay for mobile menu -->
-  <div id="navOverlay" class="nav-overlay" hidden></div>
 </header>
 
-
-  <main class="section">
-    <div class="container contact-grid" style="display:grid;gap:20px;grid-template-columns:1fr 1fr">
-      <div class="card">
-        <img src="Images\3.jpg" alt="Behind the scenes (replace contact.jpg)">
-      </div>
-      <div class="card" style="padding:22px">
-        <h1>Contact</h1>
-        <p class="muted">For bookings and collaborations, send a message. I usually reply within 24 hours.</p>
-
-        <form id="contactForm" novalidate>
-          <label class="muted" for="name">Name</label>
-          <input id="name" name="name" required placeholder="Your name"/>
-
-          <label class="muted" for="email">Email</label>
-          <input id="email" name="email" type="email" required placeholder="you@example.com"/>
-
-          <label class="muted" for="date">Preferred date</label>
-          <input id="date" name="date" type="date"/>
-
-          <label class="muted" for="message">Message</label>
-          <textarea id="message" name="message" required placeholder="Tell me about your shoot…"></textarea>
-
-          <button class="btn primary" type="submit">Send message</button>
-          <p id="formNote" class="muted"></p>
-        </form>
-      </div>
+<main class="section">
+  <div class="container contact-grid" style="display:grid;gap:20px;grid-template-columns:1fr 1fr">
+    <div class="card">
+      <img src="Images/3.jpg" alt="Behind the scenes">
     </div>
-  </main>
+    <div class="card" style="padding:22px">
+      <h1>Contact</h1>
+      <p class="muted">For bookings and collaborations, send a message. I usually reply within 24 hours.</p>
+
+      <form id="contactForm" novalidate>
+        <label for="name">Name</label>
+        <input id="name" name="name" required placeholder="Your name"/>
+        <span id="nameError" class="error"></span>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required placeholder="you@example.com"/>
+        <span id="emailError" class="error"></span>
+
+        <label for="date">Preferred date</label>
+        <div class="date-wrapper">
+          <input id="date" name="date" type="text" placeholder="dd-mm-yyyy" required>
+          <i class="bi bi-calendar-date calendar-icon"></i>
+        </div>
+        <span id="dateError" class="error"></span>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required placeholder="Tell me about your shoot…"></textarea>
+        <span id="messageError" class="error"></span>
+
+        <button class="btn primary" type="submit">Submit</button>
+        <p id="successMsg" class="success-message">✅ Thanks! Your message has been sent successfully.</p>
+      </form>
+    </div>
+  </div>
+</main>
 
 <footer>
   <div class="container footer-inner">
     <p>© <span id="year"></span> Vishnu Vekaria — All Rights Reserved</p>
     <div class="social">
-      <a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" aria-label="Instagram">
-        <i class="bi bi-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/vishnu-vekaria-y" target="_blank" aria-label="LinkedIn">
-        <i class="bi bi-linkedin"></i>
-      </a>
+      <a href="https://www.instagram.com/vishnu.vekariya/" target="_blank"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/vishnu-vekaria-y" target="_blank"><i class="bi bi-linkedin"></i></a>
     </div>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  const form = document.getElementById("contactForm");
+  const successMsg = document.getElementById("successMsg");
 
-  <script type="module" src="script.js"></script>
-  <script>
-    // front-end only demo (no backend yet)
-    const form = document.getElementById('contactForm');
-    const note = document.getElementById('formNote');
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      if(!form.checkValidity()){ note.textContent='Please fill in required fields.'; return; }
-      note.textContent = 'Thanks! Your message has been prepared. (Demo only)';
-      form.reset();
+  // Flatpickr with 2-month limit
+  const picker = flatpickr("#date", {
+    dateFormat: "d-m-Y",
+    minDate: "today",
+    maxDate: new Date().fp_incr(60)
+  });
+  document.querySelector(".calendar-icon").addEventListener("click", () => picker.open());
+
+  // Validation helper
+  function validateField(field) {
+    let valid = true;
+    const value = field.value.trim();
+    const id = field.id + "Error";
+    const errorEl = document.getElementById(id);
+
+    errorEl.textContent = "";
+    field.classList.remove("invalid");
+
+    if (field.id === "name" && !/^[A-Za-z\s]+$/.test(value)) {
+      errorEl.textContent = "Name should only contain letters and spaces.";
+      valid = false;
+    }
+    if (field.id === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      errorEl.textContent = "Email is invalid. Example: vishnu63@gmail.com";
+      valid = false;
+    }
+    if (field.id === "date" && !value) {
+      errorEl.textContent = "Please select a date.";
+      valid = false;
+    }
+    if (field.id === "message" && !value) {
+      errorEl.textContent = "Message cannot be empty.";
+      valid = false;
+    }
+
+    if (!valid) {
+      field.classList.add("invalid");
+      errorEl.classList.add("show");
+    } else {
+      errorEl.classList.remove("show");
+    }
+
+    return valid;
+  }
+
+  // Live validation
+  form.querySelectorAll("input, textarea").forEach(field => {
+    field.addEventListener("input", () => validateField(field));
+    field.addEventListener("blur", () => validateField(field));
+  });
+
+  // AJAX submit (stay on site)
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    let allValid = true;
+    form.querySelectorAll("input, textarea").forEach(field => {
+      if (!validateField(field)) allValid = false;
     });
-  </script>
+    if (!allValid) return;
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("https://formspree.io/f/xeorkqkl", {
+        method: "POST",
+        body: formData,
+        headers: { "Accept": "application/json" }
+      });
+
+      if (res.ok) {
+        successMsg.style.display = "block";
+        form.reset();
+      } else {
+        successMsg.textContent = "⚠️ Something went wrong. Please try again.";
+        successMsg.style.display = "block";
+      }
+    } catch (err) {
+      successMsg.textContent = "⚠️ Network error. Please try again later.";
+      successMsg.style.display = "block";
+    }
+  });
+</script>
 </body>
 </html>

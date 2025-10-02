@@ -293,3 +293,30 @@ img.lazy-blur.loaded {
   filter: blur(0);
   transform: scale(1);
 }
+
+/* Contact form styles */
+.error {
+  color: #e63946;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  display: block;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.error.show { opacity: 1; max-height: 50px; }
+input.invalid, textarea.invalid { border: 2px solid #e63946; }
+.success-message { margin-top: 12px; color: #2ecc71; font-weight: 500; display: none; }
+
+.date-wrapper { position: relative; display: flex; align-items: center; }
+.date-wrapper input { width: 100%; padding-right: 40px; }
+.calendar-icon {
+  position: absolute;
+  right: 12px;
+  font-size: 1.2rem;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.calendar-icon:hover { color: #1e90ff; }
