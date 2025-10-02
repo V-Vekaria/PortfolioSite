@@ -9,28 +9,35 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="container nav">
-    <a class="brand" href="index.html">Vishnu Vekaria</a>
-    <button class="hamburger" id="menuBtn"><span></span></button>
-    <nav>
-      <ul class="desktop">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="portraits.html">Portraits</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-      </ul>
-      <div class="mobile" id="mobileMenu" hidden>
-        <ul>
+  <!-- ===== Header / Navbar ===== -->
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">Vishnu Vekaria</div>
+
+      <!-- Desktop menu -->
+      <nav>
+        <ul class="desktop">
           <li><a href="index.html">Home</a></li>
-          <li><a href="portraits.html">Portraits</a></li>
+          <li><a href="portraits.html" class="active">Portraits</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
-      </div>
-    </nav>
-  </div>
-</header>
+      </nav>
+
+      <!-- Hamburger button -->
+      <button class="hamburger" aria-label="Menu"><span></span></button>
+    </div>
+
+    <!-- Mobile panel -->
+    <div class="mobile" id="mobileMenu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portraits.html" class="active">Portraits</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
 
 <main class="section">
   <div class="container contact-grid" style="display:grid;gap:20px;grid-template-columns:1fr 1fr">
