@@ -339,23 +339,72 @@ input.invalid, textarea.invalid { border: 2px solid #e63946; }
 }
 
 /* Remove default calendar icon in Chrome/Edge */
-.date-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+.date-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.date-wrapper input[type="date"] {
+  width: 100%;
+  padding-right: 36px; /* space for icon */
+}
+
+.calendar-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  user-select: none;
+}
+
+
+/* Popup styles */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  }
+.popup-box {
+  background: #252525;
+  color: #b2b1b1;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 350px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+.popup-box h2 {
+  margin-top: 0;
+}
+
+.popup-box button {
+  margin-top: 15px;
+  padding: 8px 15px;
+  border: none;
+  background: #000000;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Hide the default date picker icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;
   position: absolute;
   right: 0;
   width: 100%;
   cursor: pointer;
-}
-
-/* Custom icon */
-.calendar-icon {
-  position: absolute;
-  right: 12px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  color: #bbb;
-  user-select: none;
-}
-.calendar-icon:hover {
-  color: #fff;
 }

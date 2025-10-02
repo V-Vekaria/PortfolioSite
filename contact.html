@@ -53,20 +53,29 @@
         <label for="date">Date</label>  
         <div class="date-wrapper">
           <input id="date" name="date" type="date" required placeholder="dd-mm-yy">
-          <span class="calendar-icon" onclick="document.getElementById('date').showPicker()">📅</span>
+          <span id="calendarIcon" class="calendar-icon">📅</span>
         </div>
-        <span id="dateError" class="error"></span>
-        
+        <span id="dateError" class="error"></span>  <!-- moved here -->
+
+               
         <label for="message">Message</label>
         <textarea id="message" name="message" required placeholder="Tell me about your shoot…"></textarea>
         <span id="messageError" class="error"></span>
 
         <button class="btn primary" type="submit">Submit</button>
-        <p id="successMsg" class="success-message">✅ Thanks! Your message has been sent successfully.</p>
       </form>
     </div>
   </div>
 </main>
+
+<!-- Popup Modal -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-box" id="popupBox">
+    <h2 id="popupTitle"></h2>
+    <p id="popupMessage"></p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
 
 <footer>
   <div class="container footer-inner">
@@ -81,17 +90,35 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
   const form = document.getElementById("contactForm");
-  const successMsg = document.getElementById("successMsg");
+  const popup = document.getElementById("popup");
+  const popupBox = document.getElementById("popupBox");
+  const popupTitle = document.getElementById("popupTitle");
+  const popupMessage = document.getElementById("popupMessage");
 
-  // Flatpickr with 2-month limit
   const picker = flatpickr("#date", {
     dateFormat: "d-m-Y",
     minDate: "today",
     maxDate: new Date().fp_incr(60)
   });
-  document.querySelector(".calendar-icon").addEventListener("click", () => picker.open());
 
-  // Validation helper
+  // Show popup
+  function showPopup(type, title, message) {
+    popupBox.className = "popup-box " + type;
+    popupTitle.textContent = title;
+    popupMessage.textContent = message;
+    popup.style.display = "flex";
+
+    // Auto-close after 4s
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 4000);
+  }
+
+  function closePopup() {
+    popup.style.display = "none";
+  }
+
+  // Validation
   function validateField(field) {
     let valid = true;
     const value = field.value.trim();
@@ -120,9 +147,6 @@
 
     if (!valid) {
       field.classList.add("invalid");
-      errorEl.classList.add("show");
-    } else {
-      errorEl.classList.remove("show");
     }
 
     return valid;
@@ -134,7 +158,7 @@
     field.addEventListener("blur", () => validateField(field));
   });
 
-  // AJAX submit (stay on site)
+  // Submit with popup
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     let allValid = true;
@@ -153,42 +177,22 @@
       });
 
       if (res.ok) {
-        successMsg.style.display = "block";
+        showPopup("success", "✅ Success!", "Thanks! Your message has been sent successfully.");
         form.reset();
       } else {
-        successMsg.textContent = "⚠️ Something went wrong. Please try again.";
-        successMsg.style.display = "block";
+        showPopup("error", "⚠️ Error", "Something went wrong. Please try again.");
       }
     } catch (err) {
-      successMsg.textContent = "⚠️ Network error. Please try again later.";
-      successMsg.style.display = "block";
+      showPopup("error", "⚠️ Network Error", "Please check your connection and try again.");
     }
   });
-function updateCalendarIcon() {
-  const today = new Date();
-  const day = today.getDate();
-  document.getElementById("calendarIcon").textContent = day;
-}
 
-updateCalendarIcon();
+  const calendarIcon = document.getElementById("calendarIcon");
+  const dateInput = document.getElementById("date");
 
-function scheduleMidnightUpdate() {
-  const now = new Date();
-  const tomorrow = new Date();
-  tomorrow.setHours(24, 0, 0, 0);
-  const msUntilMidnight = tomorrow - now;
-
-  setTimeout(() => {
-    updateCalendarIcon();
-    scheduleMidnightUpdate();
-  }, msUntilMidnight);
-}
-
-scheduleMidnightUpdate();
-
-document.getElementById("calendarIcon").addEventListener("click", () => {
-  document.getElementById("date").showPicker?.(); 
-});
+  calendarIcon.addEventListener("click", () => {
+    picker.open();   // Flatpickr API call to open calendar
+  });
 
 </script>
 </body>
