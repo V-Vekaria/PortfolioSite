@@ -320,3 +320,42 @@ input.invalid, textarea.invalid { border: 2px solid #e63946; }
   transition: color 0.2s ease;
 }
 .calendar-icon:hover { color: #1e90ff; }
+
+/* Wrapper so icon sits inside input */
+.date-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.date-wrapper input[type="date"] {
+  width: 100%;
+  padding-right: 40px; /* make room for icon */
+  background-color: #111;
+  color: #fff;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+/* Remove default calendar icon in Chrome/Edge */
+.date-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Custom icon */
+.calendar-icon {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #bbb;
+  user-select: none;
+}
+.calendar-icon:hover {
+  color: #fff;
+}

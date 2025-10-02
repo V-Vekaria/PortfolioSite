@@ -49,14 +49,14 @@
         <label for="email">Email</label>
         <input id="email" name="email" type="email" required placeholder="you@example.com"/>
         <span id="emailError" class="error"></span>
-
-        <label for="date">Preferred date</label>
+        
+        <label for="date">Date</label>  
         <div class="date-wrapper">
-          <input id="date" name="date" type="text" placeholder="dd-mm-yyyy" required>
-          <i class="bi bi-calendar-date calendar-icon"></i>
+          <input id="date" name="date" type="date" required placeholder="dd-mm-yy">
+          <span class="calendar-icon" onclick="document.getElementById('date').showPicker()">📅</span>
         </div>
         <span id="dateError" class="error"></span>
-
+        
         <label for="message">Message</label>
         <textarea id="message" name="message" required placeholder="Tell me about your shoot…"></textarea>
         <span id="messageError" class="error"></span>
@@ -164,6 +164,32 @@
       successMsg.style.display = "block";
     }
   });
+function updateCalendarIcon() {
+  const today = new Date();
+  const day = today.getDate();
+  document.getElementById("calendarIcon").textContent = day;
+}
+
+updateCalendarIcon();
+
+function scheduleMidnightUpdate() {
+  const now = new Date();
+  const tomorrow = new Date();
+  tomorrow.setHours(24, 0, 0, 0);
+  const msUntilMidnight = tomorrow - now;
+
+  setTimeout(() => {
+    updateCalendarIcon();
+    scheduleMidnightUpdate();
+  }, msUntilMidnight);
+}
+
+scheduleMidnightUpdate();
+
+document.getElementById("calendarIcon").addEventListener("click", () => {
+  document.getElementById("date").showPicker?.(); 
+});
+
 </script>
 </body>
 </html>
