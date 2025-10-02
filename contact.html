@@ -9,35 +9,42 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
-  <!-- ===== Header / Navbar ===== -->
-  <header class="site-header">
-    <div class="container nav">
-      <div class="brand">Vishnu Vekaria</div>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">Vishnu Vekaria</a>
 
-      <!-- Desktop menu -->
-      <nav>
-        <ul class="desktop">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="portraits.html" class="active">Portraits</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+    <!-- Hamburger button -->
+    <button class="hamburger" id="menuBtn"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileMenu">
+      <span></span>
+    </button>
 
-      <!-- Hamburger button -->
-      <button class="hamburger" aria-label="Menu"><span></span></button>
-    </div>
-
-    <!-- Mobile panel -->
-    <div class="mobile" id="mobileMenu">
-      <ul>
+    <!-- Desktop links -->
+    <nav aria-label="Primary">
+      <ul class="desktop">
         <li><a href="index.html">Home</a></li>
-        <li><a href="portraits.html" class="active">Portraits</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="portraits.html">Portraits</a></li>
+        <li><a href="about.html" >About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
-    </div>
-  </header>
+
+      <!-- Mobile panel -->
+      <div class="mobile" id="mobileMenu" hidden>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="portraits.html">Portraits</a></li>
+          <li><a href="about.html" >About</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Clickable overlay for mobile menu -->
+  <div id="navOverlay" class="nav-overlay" hidden></div>
+</header>
 
 <main class="section">
   <div class="container contact-grid" style="display:grid;gap:20px;grid-template-columns:1fr 1fr">
@@ -93,114 +100,113 @@
     </div>
   </div>
 </footer>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    const form = document.getElementById("contactForm");
+    const popup = document.getElementById("popup");
+    const popupBox = document.getElementById("popupBox");
+    const popupTitle = document.getElementById("popupTitle");
+    const popupMessage = document.getElementById("popupMessage");
 
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script>
-  const form = document.getElementById("contactForm");
-  const popup = document.getElementById("popup");
-  const popupBox = document.getElementById("popupBox");
-  const popupTitle = document.getElementById("popupTitle");
-  const popupMessage = document.getElementById("popupMessage");
-
-  const picker = flatpickr("#date", {
-    dateFormat: "d-m-Y",
-    minDate: "today",
-    maxDate: new Date().fp_incr(60)
-  });
-
-  // Show popup
-  function showPopup(type, title, message) {
-    popupBox.className = "popup-box " + type;
-    popupTitle.textContent = title;
-    popupMessage.textContent = message;
-    popup.style.display = "flex";
-
-    // Auto-close after 4s
-    setTimeout(() => {
-      popup.style.display = "none";
-    }, 4000);
-  }
-
-  function closePopup() {
-    popup.style.display = "none";
-  }
-
-  // Validation
-  function validateField(field) {
-    let valid = true;
-    const value = field.value.trim();
-    const id = field.id + "Error";
-    const errorEl = document.getElementById(id);
-
-    errorEl.textContent = "";
-    field.classList.remove("invalid");
-
-    if (field.id === "name" && !/^[A-Za-z\s]+$/.test(value)) {
-      errorEl.textContent = "Name should only contain letters and spaces.";
-      valid = false;
-    }
-    if (field.id === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-      errorEl.textContent = "Email is invalid. Example: vishnu63@gmail.com";
-      valid = false;
-    }
-    if (field.id === "date" && !value) {
-      errorEl.textContent = "Please select a date.";
-      valid = false;
-    }
-    if (field.id === "message" && !value) {
-      errorEl.textContent = "Message cannot be empty.";
-      valid = false;
-    }
-
-    if (!valid) {
-      field.classList.add("invalid");
-    }
-
-    return valid;
-  }
-
-  // Live validation
-  form.querySelectorAll("input, textarea").forEach(field => {
-    field.addEventListener("input", () => validateField(field));
-    field.addEventListener("blur", () => validateField(field));
-  });
-
-  // Submit with popup
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    let allValid = true;
-    form.querySelectorAll("input, textarea").forEach(field => {
-      if (!validateField(field)) allValid = false;
+    const picker = flatpickr("#date", {
+      dateFormat: "d-m-Y",
+      minDate: "today",
+      maxDate: new Date().fp_incr(60)
     });
-    if (!allValid) return;
 
-    const formData = new FormData(form);
+    // Show popup
+    function showPopup(type, title, message) {
+      popupBox.className = "popup-box " + type;
+      popupTitle.textContent = title;
+      popupMessage.textContent = message;
+      popup.style.display = "flex";
 
-    try {
-      const res = await fetch("https://formspree.io/f/xeorkqkl", {
-        method: "POST",
-        body: formData,
-        headers: { "Accept": "application/json" }
-      });
-
-      if (res.ok) {
-        showPopup("success", "✅ Success!", "Thanks! Your message has been sent successfully.");
-        form.reset();
-      } else {
-        showPopup("error", "⚠️ Error", "Something went wrong. Please try again.");
-      }
-    } catch (err) {
-      showPopup("error", "⚠️ Network Error", "Please check your connection and try again.");
+      // Auto-close after 4s
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 4000);
     }
-  });
 
-  const calendarIcon = document.getElementById("calendarIcon");
-  const dateInput = document.getElementById("date");
+    function closePopup() {
+      popup.style.display = "none";
+    }
 
-  calendarIcon.addEventListener("click", () => {
-    picker.open();   // Flatpickr API call to open calendar
-  });
+    // Validation
+    function validateField(field) {
+      let valid = true;
+      const value = field.value.trim();
+      const id = field.id + "Error";
+      const errorEl = document.getElementById(id);
 
-</script>
+      errorEl.textContent = "";
+      field.classList.remove("invalid");
+
+      if (field.id === "name" && !/^[A-Za-z\s]+$/.test(value)) {
+        errorEl.textContent = "Name should only contain letters and spaces.";
+        valid = false;
+      }
+      if (field.id === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        errorEl.textContent = "Email is invalid. Example: vishnu63@gmail.com";
+        valid = false;
+      }
+      if (field.id === "date" && !value) {
+        errorEl.textContent = "Please select a date.";
+        valid = false;
+      }
+      if (field.id === "message" && !value) {
+        errorEl.textContent = "Message cannot be empty.";
+        valid = false;
+      }
+
+      if (!valid) {
+        field.classList.add("invalid");
+      }
+
+      return valid;
+    }
+
+    // Live validation
+    form.querySelectorAll("input, textarea").forEach(field => {
+      field.addEventListener("input", () => validateField(field));
+      field.addEventListener("blur", () => validateField(field));
+    });
+
+    // Submit with popup
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      let allValid = true;
+      form.querySelectorAll("input, textarea").forEach(field => {
+        if (!validateField(field)) allValid = false;
+      });
+      if (!allValid) return;
+
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch("https://formspree.io/f/xeorkqkl", {
+          method: "POST",
+          body: formData,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (res.ok) {
+          showPopup("success", "✅ Success!", "Thanks! Your message has been sent successfully.");
+          form.reset();
+        } else {
+          showPopup("error", "⚠️ Error", "Something went wrong. Please try again.");
+        }
+      } catch (err) {
+        showPopup("error", "⚠️ Network Error", "Please check your connection and try again.");
+      }
+    });
+
+    const calendarIcon = document.getElementById("calendarIcon");
+    const dateInput = document.getElementById("date");
+
+    calendarIcon.addEventListener("click", () => {
+      picker.open();   // Flatpickr API call to open calendar
+    });
+  </script>
+<script type="module" src="script.js"></script>
 </body>
 </html>
