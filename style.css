@@ -129,7 +129,7 @@ nav a:hover, nav a.active{background:#1a1a1f}
   .about-grid > div:last-child  { order: 1; }
   .about-grid img { max-width: 260px; margin: 0 auto; border-radius: 16px; }
 
-  .contact-grid { grid-template-columns: 1fr !important; text-align: center; gap: 24px; }
+  .contact-grid { grid-template-columns: 1fr !important; text-align: left; gap: 24px; }
   .contact-grid > div:first-child { order: 1; }
   .contact-grid > div:last-child  { order: 2; }
   .contact-grid img { max-width: 260px; margin: 0 auto; border-radius: 16px; }
