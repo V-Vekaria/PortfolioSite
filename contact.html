@@ -125,101 +125,92 @@
 
   <!-- Page-specific JS -->
   <script>
-    const form = document.getElementById("contactForm");
-    const popup = document.getElementById("popup");
-    const popupBox = document.getElementById("popupBox");
-    const popupTitle = document.getElementById("popupTitle");
-    const popupMessage = document.getElementById("popupMessage");
-    const calendarIcon = document.getElementById("calendarIcon");
-    const dateInput = document.getElementById("date");
-
-    // ✅ Flatpickr configuration (forces custom calendar on mobile)
+    // ===== Flatpickr (calendar) =====
     const picker = flatpickr("#date", {
       dateFormat: "d-m-Y",
       minDate: "today",
-      maxDate: new Date().fp_incr(60),
-      disableMobile: true,  // <– ensures Flatpickr even on mobile
-      onReady: function(selectedDates, dateStr, instance) {
-        // make the icon clickable to open Flatpickr
-        calendarIcon.addEventListener("click", () => instance.open());
-      }
+      maxDate: new Date().fp_incr(60) // next 60 days
     });
+    document.getElementById("calendarIcon").addEventListener("click", () => picker.open());
 
-    // ✅ Popup handlers
-    function showPopup(type, title, message) {
-      popupBox.className = "popup-box " + type;
+    // ===== Popup helpers =====
+    const popup = document.getElementById("popup");
+    const popupTitle = document.getElementById("popupTitle");
+    const popupMessage = document.getElementById("popupMessage");
+    function showPopup(type, title, message){
+      const box = document.getElementById("popupBox");
+      box.classList.remove("success","error");
+      box.classList.add(type);
       popupTitle.textContent = title;
       popupMessage.textContent = message;
       popup.style.display = "flex";
-      setTimeout(() => (popup.style.display = "none"), 4000);
+      setTimeout(()=> popup.style.display="none", 4000);
     }
 
-    function closePopup() {
-      popup.style.display = "none";
+    // ===== Validation helpers (mobile-safe) =====
+    function setError(field, msg){
+      const el = document.getElementById(field.id + "Error");
+      if (!el) return;
+      el.textContent = msg || "";
+      el.classList.toggle("show", !!msg);
+      field.classList.toggle("invalid", !!msg);
+    }
+    function validateField(field){
+      const v = field.value.trim();
+      if (field.id === "name")   return setError(field, /^[A-Za-z\s]+$/.test(v) ? "" : "Letters only.");
+      if (field.id === "email")  return setError(field, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : "Invalid email.");
+      if (field.id === "date")   return setError(field, v ? "" : "Please select a date.");
+      if (field.id === "message")return setError(field, v ? "" : "Enter a message.");
     }
 
-    // ✅ Field validation
-    function validateField(field) {
-      let valid = true;
-      const value = field.value.trim();
-      const id = field.id + "Error";
-      const errorEl = document.getElementById(id);
-      errorEl.textContent = "";
-      field.classList.remove("invalid");
-
-      if (field.id === "name" && !/^[A-Za-z\s]+$/.test(value)) {
-        errorEl.textContent = "Name should only contain letters and spaces.";
-        valid = false;
-      }
-      if (field.id === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-        errorEl.textContent = "Email is invalid. Example: vishnu63@gmail.com";
-        valid = false;
-      }
-      if (field.id === "date" && !value) {
-        errorEl.textContent = "Please select a date.";
-        valid = false;
-      }
-      if (field.id === "message" && !value) {
-        errorEl.textContent = "Message cannot be empty.";
-        valid = false;
-      }
-      if (!valid) field.classList.add("invalid");
-      return valid;
-    }
-
-    // ✅ Live validation
-    form.querySelectorAll("input, textarea").forEach(field => {
-      field.addEventListener("input", () => validateField(field));
-      field.addEventListener("blur", () => validateField(field));
+    const form = document.getElementById("contactForm");
+    form.querySelectorAll("input, textarea").forEach(f=>{
+      f.addEventListener("input",  ()=> validateField(f));
+      f.addEventListener("blur",   ()=> validateField(f));
+      f.addEventListener("change", ()=> validateField(f)); // important for mobile date
     });
 
-    // ✅ Submit handling
-    form.addEventListener("submit", async e => {
+    // ===== Submit (AJAX to Formspree; stay on page) =====
+    form.addEventListener("submit", async (e)=>{
       e.preventDefault();
-      let allValid = true;
-      form.querySelectorAll("input, textarea").forEach(field => {
-        if (!validateField(field)) allValid = false;
-      });
-      if (!allValid) return;
 
-      const formData = new FormData(form);
-      try {
+      // validate all
+      let ok = true;
+      form.querySelectorAll("input, textarea").forEach(f=>{
+        validateField(f);
+        if (f.classList.contains("invalid")) ok = false;
+      });
+      if (!ok) return;
+
+      try{
         const res = await fetch("https://formspree.io/f/xeorkqkl", {
           method: "POST",
-          body: formData,
+          body: new FormData(form),
           headers: { "Accept": "application/json" }
         });
-        if (res.ok) {
-          showPopup("success", "✅ Success!", "Thanks! Your message has been sent successfully.");
+        if (res.ok){
           form.reset();
-        } else {
-          showPopup("error", "⚠️ Error", "Something went wrong. Please try again.");
+          showPopup("success","✅ Success!","Your message has been sent.");
+        }else{
+          showPopup("error","⚠️ Error","Something went wrong. Try again.");
         }
-      } catch {
-        showPopup("error", "⚠️ Network Error", "Please check your connection and try again.");
+      }catch(err){
+        showPopup("error","⚠️ Network error","Please check your connection.");
       }
     });
-  </script>
 
+    // ===== Mobile overlay safety (prevents overlay from blocking taps) =====
+    (function forceCloseNav(){
+      const overlay = document.getElementById('navOverlay');
+      const mobileMenu = document.getElementById('mobileMenu');
+      function closeNav(){
+        overlay?.setAttribute('hidden','');
+        mobileMenu?.setAttribute('hidden','');
+        document.body.classList.remove('nav-open');
+      }
+      closeNav();
+      window.addEventListener('pageshow', closeNav);
+    })();
+  </script>
 </body>
 </html>
