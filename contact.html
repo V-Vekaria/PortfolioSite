@@ -101,112 +101,109 @@
   </div>
 </footer>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script>
-    const form = document.getElementById("contactForm");
-    const popup = document.getElementById("popup");
-    const popupBox = document.getElementById("popupBox");
-    const popupTitle = document.getElementById("popupTitle");
-    const popupMessage = document.getElementById("popupMessage");
+<script>
+const form = document.getElementById("contactForm");
+const popup = document.getElementById("popup");
+const popupTitle = document.getElementById("popupTitle");
+const popupMessage = document.getElementById("popupMessage");
 
-    const picker = flatpickr("#date", {
-      dateFormat: "d-m-Y",
-      minDate: "today",
-      maxDate: new Date().fp_incr(60)
+// --- universal z-index safety for mobile ---
+popup.style.zIndex = "9999";
+
+// --- Helper: show popup ---
+function showPopup(type, title, message) {
+  popupTitle.textContent = title;
+  popupMessage.textContent = message;
+  popup.style.display = "flex";
+
+  popup.classList.remove("error", "success");
+  popup.classList.add(type);
+
+  // Auto-close
+  setTimeout(() => popup.style.display = "none", 4000);
+}
+
+function closePopup() {
+  popup.style.display = "none";
+}
+
+// --- Error Handling ---
+function setError(field, message) {
+  const errorEl = document.getElementById(field.id + "Error");
+  if (message) {
+    errorEl.textContent = message;
+    errorEl.classList.add("show");
+    field.classList.add("invalid");
+  } else {
+    errorEl.textContent = "";
+    errorEl.classList.remove("show");
+    field.classList.remove("invalid");
+  }
+}
+
+function validateField(field) {
+  const val = field.value.trim();
+
+  switch (field.id) {
+    case "name":
+      if (!/^[A-Za-z\s]+$/.test(val)) return setError(field, "Letters only.");
+      break;
+    case "email":
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) return setError(field, "Invalid email.");
+      break;
+    case "date":
+      if (!val) return setError(field, "Select a date.");
+      break;
+    case "message":
+      if (!val) return setError(field, "Enter a message.");
+      break;
+  }
+
+  return setError(field, ""); // clear errors
+}
+
+// --- Live validation for touch devices too ---
+form.querySelectorAll("input, textarea").forEach((field) => {
+  field.addEventListener("input", () => validateField(field));
+  field.addEventListener("blur", () => validateField(field));
+  field.addEventListener("change", () => validateField(field)); // important for date on mobile
+});
+
+// --- Form submit handler ---
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  let valid = true;
+  form.querySelectorAll("input, textarea").forEach((field) => {
+    validateField(field);
+    if (field.classList.contains("invalid")) valid = false;
+  });
+
+  if (!valid) {
+    showPopup("error", "⚠️ Fix errors", "Please check the highlighted fields.");
+    return;
+  }
+
+  const formData = new FormData(form);
+  try {
+    const res = await fetch("https://formspree.io/f/xeorkqkl", {
+      method: "POST",
+      body: formData,
+      headers: { "Accept": "application/json" }
     });
 
-    // Show popup
-    function showPopup(type, title, message) {
-      popupBox.className = "popup-box " + type;
-      popupTitle.textContent = title;
-      popupMessage.textContent = message;
-      popup.style.display = "flex";
-
-      // Auto-close after 4s
-      setTimeout(() => {
-        popup.style.display = "none";
-      }, 4000);
+    if (res.ok) {
+      form.reset();
+      showPopup("success", "✅ Success!", "Message sent successfully!");
+    } else {
+      showPopup("error", "⚠️ Error", "Something went wrong. Please try again.");
     }
+  } catch (err) {
+    showPopup("error", "⚠️ Network Error", "Please check your internet connection.");
+  }
+});
+</script>
 
-    function closePopup() {
-      popup.style.display = "none";
-    }
-
-    // Validation
-    function validateField(field) {
-      let valid = true;
-      const value = field.value.trim();
-      const id = field.id + "Error";
-      const errorEl = document.getElementById(id);
-
-      errorEl.textContent = "";
-      field.classList.remove("invalid");
-
-      if (field.id === "name" && !/^[A-Za-z\s]+$/.test(value)) {
-        errorEl.textContent = "Name should only contain letters and spaces.";
-        valid = false;
-      }
-      if (field.id === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-        errorEl.textContent = "Email is invalid. Example: vishnu63@gmail.com";
-        valid = false;
-      }
-      if (field.id === "date" && !value) {
-        errorEl.textContent = "Please select a date.";
-        valid = false;
-      }
-      if (field.id === "message" && !value) {
-        errorEl.textContent = "Message cannot be empty.";
-        valid = false;
-      }
-
-      if (!valid) {
-        field.classList.add("invalid");
-      }
-
-      return valid;
-    }
-
-    // Live validation
-    form.querySelectorAll("input, textarea").forEach(field => {
-      field.addEventListener("input", () => validateField(field));
-      field.addEventListener("blur", () => validateField(field));
-    });
-
-    // Submit with popup
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      let allValid = true;
-      form.querySelectorAll("input, textarea").forEach(field => {
-        if (!validateField(field)) allValid = false;
-      });
-      if (!allValid) return;
-
-      const formData = new FormData(form);
-
-      try {
-        const res = await fetch("https://formspree.io/f/xeorkqkl", {
-          method: "POST",
-          body: formData,
-          headers: { "Accept": "application/json" }
-        });
-
-        if (res.ok) {
-          showPopup("success", "✅ Success!", "Thanks! Your message has been sent successfully.");
-          form.reset();
-        } else {
-          showPopup("error", "⚠️ Error", "Something went wrong. Please try again.");
-        }
-      } catch (err) {
-        showPopup("error", "⚠️ Network Error", "Please check your connection and try again.");
-      }
-    });
-
-    const calendarIcon = document.getElementById("calendarIcon");
-    const dateInput = document.getElementById("date");
-
-    calendarIcon.addEventListener("click", () => {
-      picker.open();   // Flatpickr API call to open calendar
-    });
-  </script>
 <script type="module" src="script.js"></script>
 </body>
 </html>

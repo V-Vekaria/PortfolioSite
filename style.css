@@ -305,9 +305,54 @@ img.lazy-blur.loaded {
   overflow: hidden;
   transition: all 0.3s ease;
 }
-.error.show { opacity: 1; max-height: 50px; }
-input.invalid, textarea.invalid { border: 2px solid #e63946; }
-.success-message { margin-top: 12px; color: #2ecc71; font-weight: 500; display: none; }
+/* Error messages */
+.error {
+  color: #e63946;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.error.show {
+  opacity: 1;
+  max-height: 40px;
+}
+input.invalid, textarea.invalid {
+  border: 2px solid #e63946;
+}
+
+/* Popup styling */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-box {
+  background: #141416;
+  color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  animation: popIn 0.3s ease;
+}
+
+.popup-box.success { border: 2px solid #00d26a; }
+.popup-box.error { border: 2px solid #e63946; }
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
 
 .date-wrapper { position: relative; display: flex; align-items: center; }
 .date-wrapper input { width: 100%; padding-right: 40px; }
