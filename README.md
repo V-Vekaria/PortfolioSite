@@ -1,58 +1,85 @@
-# PortfolioSite
+# Vishnu Vekaria — Portfolio Site
 
-[Live Demo → https://vishnuprofile.netlify.app/](https://vishnupro.netlify.app/)
+Personal portfolio website built from scratch using HTML, CSS, and JavaScript. Demonstrates responsive front-end design, clean UI/UX, and a full Git → Netlify continuous deployment workflow.
 
----
-
-## Overview
-
-This is my personal portfolio website showcasing my skills, experience, and technical work.  
-It includes a home page, about page, and contact page with a working form.  
-The site is responsive and demonstrates my understanding of web design principles and deployment workflows.
+**Live site → [vishnupro.netlify.app](https://vishnupro.netlify.app)**
 
 ---
 
-## Features
-- Responsive layout using **Bootstrap**  
-- Contact form with client-side **validation**  
-- Email integration using **Formspree**  
-- Continuous deployment via **GitHub → Netlify**  
-- Clean navigation and structured content sections
+## What It Does
+
+A personal site with four pages:
+
+- **Home** — introduction, tech stack tags, and a hero section
+- **Portraits** — photography showcase with responsive image gallery
+- **About** — background, skills, and what I'm looking for
+- **Contact** — working contact form with client-side validation and Formspree email integration
 
 ---
 
 ## Tech Stack
-- HTML5, CSS3, Bootstrap, JavaScript  
-- Formspree (email form)  
-- Netlify (hosting / deployment)  
-- Git & GitHub (version control)  
-- VS Code (code editor)
+
+| Layer | Technology |
+|---|---|
+| Markup | HTML5 |
+| Styling | CSS3, Bootstrap |
+| Interactivity | Vanilla JavaScript |
+| Form handling | Formspree |
+| Version control | Git + GitHub |
+| Hosting | Netlify (continuous deployment) |
+
+---
+
+## Features
+
+- Fully responsive — works on mobile, tablet, and desktop
+- Clean navigation with active-state highlighting
+- Contact form with client-side validation before submission
+- Automatic deployment on every push to `main` via GitHub → Netlify
+- Organised asset structure (`/css`, `/js`, `/assets/images`, `/data`)
+
+---
+
+## Run Locally
+
+No build step needed — plain HTML/CSS/JS.
+
+```bash
+git clone https://github.com/V-Vekaria/PortfolioSite.git
+cd PortfolioSite
+# Open index.html in your browser
+open index.html        # macOS
+start index.html       # Windows
+```
+
+---
+
+## Project Structure
+
+```
+PortfolioSite/
+├── index.html          # Home page
+├── about.html          # About page
+├── portraits.html      # Photography gallery
+├── contact.html        # Contact form
+├── css/                # Stylesheets
+├── js/                 # JavaScript files
+├── assets/images/      # Images and media
+└── data/               # Static data files
+```
 
 ---
 
 ## What I Learned
-- Using Git & GitHub for version control  
-- Deploying automatically to Netlify  
-- Building responsive layouts with Bootstrap  
-- Managing assets and UI components
+
+- Structuring a multi-page static site with shared navigation
+- Building and validating a contact form without a backend
+- Setting up continuous deployment via GitHub → Netlify
+- Organising assets and maintaining clean version control across 30+ commits
 
 ---
 
-## Future Plans
-- Add backend (Node.js / Firebase)  
-- Add blog & project gallery  
-- Try React.js for future version  
-- Improve design polish
+## Author
 
----
-
-## About Me
-
-**Name:** Vishnu Vekaria  
-**Currently studying:** BSc Computer Science, Ulster University (London)  
-**Goal:** To pursue a Master’s in Computer Science in South Korea under the **Global Korea Scholarship (GKS)**, focusing on AI / Data Science.  
-**Portfolio:** [demo1port.netlify.app](https://demo1port.netlify.app/)  
-**GitHub:** [github.com/V-Vekaria](https://github.com/V-Vekaria)
-
----
-
+**Vishnu Vekaria** — BSc (Hons) Computing, Ulster University London  
+[github.com/V-Vekaria](https://github.com/V-Vekaria) · [linkedin.com/in/vekaria-vishnu](https://www.linkedin.com/in/vekaria-vishnu/) · [vishnupro.netlify.app](https://vishnupro.netlify.app)
