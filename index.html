@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Vishnu Vekaria — Portfolio</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">Vishnu Vekaria</a>
+
+    <!-- Hamburger button -->
+    <button class="hamburger" id="menuBtn"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileMenu">
+      <span></span>
+    </button>
+
+    <!-- Desktop links -->
+    <nav aria-label="Primary">
+      <ul class="desktop">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <!-- Mobile panel -->
+      <div class="mobile" id="mobileMenu" hidden>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Clickable overlay for mobile menu -->
+  <div id="navOverlay" class="nav-overlay" hidden></div>
+</header>
+
+<main class="section">
+  <div class="container hero-grid" style="display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:32px">
+    
+    <!-- Left: Text -->
+    <div>
+      <span class="pill">Python · Flask · Azure</span>
+      <h1>Hi, I’m Vishnu — <br>  Software Engineer, CS Student & Junior Full-Stack Developer</h1>
+      <p>
+        Final-year BSc (Hons) Computer Science student at Ulster University London, 
+        graduating September 2026, focused on full-stack and backend engineering. 
+        I’m seeking part-time or entry-level opportunities in web development, 
+        IT support, or software roles where I can apply my skills and grow professionally.<br><br>
+      </p>
+      <a href="projects.html" class="btn primary">View Projects</a>
+      <a href="contact.html" class="btn">Contact Me</a>
+    </div>
+
+    <!-- Right: Image -->
+    <div>
+      <img src="assets/images/close_up.JPG" alt="Vishnu Vekaria">
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Vishnu Vekaria — All Rights Reserved</p>
+    <div class="social">
+      <a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" aria-label="Instagram">
+        <i class="bi bi-instagram"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" aria-label="LinkedIn">
+        <i class="bi bi-linkedin"></i>
+      </a>
+      <a href="https://github.com/V-Vekaria" target="_blank" aria-label="GitHub">
+        <i class="bi bi-github"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>

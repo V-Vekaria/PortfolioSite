@@ -1,0 +1,54 @@
+[
+  {
+    "id": "p01",
+    "file": "assets/images/blazer_style.JPG",
+    "alt": "Outdoor editorial portrait"
+  },
+  {
+    "id": "p02",
+    "file": "assets/images/In_Black.JPG",
+    "alt": "Urban street style portrait"
+  },
+  {
+    "id": "p03",
+    "file": "assets/images/13.jpg",
+    "alt": "Studio black and white portrait"
+  },
+  {
+    "id": "p04",
+    "file": "assets/images/1.jpg",
+    "alt": "Studio black and white portrait"
+  },
+  {
+    "id": "p05",
+    "file": "assets/images/3.jpg",
+    "alt": "Studio black and white portrait"
+  },
+  {
+    "id": "p006",
+    "file": "assets/images/8.jpg",
+    "alt": "Studio black and white portrait"
+  },
+  {
+    "id": "p007",
+    "file": "assets/images/12.jpg",
+    "alt": "Studio black and white portrait"
+  },
+  {
+    "id": "p008",
+    "file": "assets/images/on_the_pull.JPG",
+    "alt": "Studio black and white portrait"
+  },
+  {
+    "id": "p009",
+    "file": "assets/images/chair_pose.jpg",
+    "alt": "Studio black and white portrait"
+  },
+  {
+    "id": "p0010",
+    "file": "assets/images/13.jpg",
+    "alt": "Studio black and white portrait"
+  }
+
+  
+]
