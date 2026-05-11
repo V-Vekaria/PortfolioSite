@@ -211,6 +211,86 @@ footer .social a:hover img { filter: invert(100%); }
   .footer-inner { flex-direction: column; text-align: center; gap: 8px; }
 }
 
+/* ===== Hero code illustration ===== */
+.hero-code {
+  border-radius: 14px;
+  box-shadow: 0 24px 64px rgba(0,0,0,.5);
+}
+
+/* ===== About — profile card ===== */
+.profile-card {
+  padding: 32px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #00d2ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 14px;
+  box-shadow: 0 0 36px rgba(138,125,255,.35);
+}
+
+.profile-stats {
+  display: flex;
+  gap: 0;
+  width: 100%;
+  border-radius: 12px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 8px;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+
+.stat-num {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.profile-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ===== Contact — full-width solo card ===== */
+.contact-solo {
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
 /* ===== Projects page ===== */
 .projects-grid {
   display: grid;
