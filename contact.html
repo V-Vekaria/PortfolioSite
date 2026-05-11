@@ -129,7 +129,7 @@
 
   function validateField(field) {
     const v = field.value.trim();
-    if (field.id === "name")    return setError(field, /^[A-Za-z\s]+$/.test(v) ? "" : "Letters only.");
+    if (field.id === "name")    return setError(field, v ? (/^[A-Za-z\s]+$/.test(v) ? "" : "Letters only.") : "Please enter a name.");
     if (field.id === "email")   return setError(field, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : "Invalid email.");
     if (field.id === "subject") return setError(field, v ? "" : "Please enter a subject.");
     if (field.id === "message") return setError(field, v ? "" : "Please enter a message.");
