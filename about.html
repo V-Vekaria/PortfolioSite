@@ -12,7 +12,6 @@
   <div class="container nav">
     <a class="brand" href="index.html">Vishnu Vekaria</a>
 
-    <!-- Hamburger button -->
     <button class="hamburger" id="menuBtn"
             aria-label="Open menu"
             aria-expanded="false"
@@ -20,28 +19,24 @@
       <span></span>
     </button>
 
-    <!-- Desktop links -->
     <nav aria-label="Primary">
       <ul class="desktop">
         <li><a href="index.html">Home</a></li>
-        <li><a href="portraits.html">Portraits</a></li>
-        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
 
-      <!-- Mobile panel -->
       <div class="mobile" id="mobileMenu" hidden>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="portraits.html">Portraits</a></li>
-          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
     </nav>
   </div>
-
-  <!-- Clickable overlay for mobile menu -->
   <div id="navOverlay" class="nav-overlay" hidden></div>
 </header>
 
@@ -50,46 +45,77 @@
     <div class="card" style="padding:22px">
       <span class="pill">About Me</span>
       <h1>Hi, I'm Vishnu Vekaria</h1>
-        <p>
-          Final-year BSc (Hons) Computer Science student at Ulster University London, graduating September 2026, focused on full-stack and backend engineering.
-          I build RESTful APIs and cloud-native applications in Python, with hands-on experience across Flask, MongoDB, and Microsoft Azure. My university coursework spans full-stack development, cloud-native architecture, systems security, data analytics, and computer vision — and I apply what I learn by building real projects on GitHub.
-          Recent projects:
-          - SaaS Usage Monitoring API — a modular Flask REST API with MongoDB Atlas, bcrypt authentication, and role-based access control (COM661 coursework)
-          - Cloud-Native Multimedia Platform — a serverless architecture on Azure using Functions, Cosmos DB, and Blob Storage with GitHub Actions CI/CD (COM682 coursework, in progress)
-          - Final Year Computing Project — researching a secure file-transfer system with statistical anomaly detection (COM668 dissertation, in progress)
-          Alongside my studies, I work at Sainsbury's in Hendon as a Customer Service & Front-End Coordinator, where I was promoted within my first month to coordinate a team of 5–8 staff during supervisor shifts. The combination of technical work and front-line team leadership has been good training in both problem-solving and communication.
-          I'm looking for junior developer roles in full-stack or backend engineering — available for part-time or placement work now, and full-time from September 2026.
-        </p>
 
-        <p>
-            Alongside my technical journey, I also enjoy portrait and fashion photography, combining creativity 
-            with precision and attention to detail.
-        </p>
+      <p>
+        Final-year BSc (Hons) Computer Science student at Ulster University London, graduating September 2026,
+        focused on full-stack and backend engineering. I build RESTful APIs and cloud-native applications in
+        Python, with hands-on experience across Flask, MongoDB, and Microsoft Azure.
+      </p>
+      <p>
+        My coursework spans full-stack development, cloud-native architecture, systems security, data analytics,
+        and computer vision. I apply what I learn by shipping real projects — see the
+        <a href="projects.html" style="color:var(--accent)">Projects</a> page for details.
+      </p>
+      <p>
+        Alongside my studies, I work at Sainsbury's in Hendon as a Customer Service &amp; Front-End Coordinator,
+        where I was promoted within my first month to coordinate a team of 5–8 staff during supervisor shifts.
+        That combination of technical work and front-line team leadership has been good training in both
+        problem-solving and communication.
+      </p>
+      <p>
+        I'm looking for junior developer roles in full-stack or backend engineering — available for part-time
+        or placement work now, and full-time from September 2026.
+      </p>
+
       <h3>Skills</h3>
       <ul>
-          <li>Front-End Development (HTML, CSS, JavaScript)</li>
-          <li>UI/UX Fundamentals</li>
-          <li>Python Programming</li>
-          <li>GitHub & Version Control</li>
-          <li>Responsive Web Design</li>
-          <li>Basic Computer Vision / AI foundations</li>
+        <li>Python · Flask · REST API design</li>
+        <li>MongoDB · Microsoft Azure (Functions, Cosmos DB, Blob Storage)</li>
+        <li>HTML · CSS · JavaScript</li>
+        <li>Git &amp; GitHub · GitHub Actions · CI/CD</li>
+        <li>Responsive Web Design</li>
+        <li>Systems Security · Computer Vision foundations</li>
       </ul>
+
       <h3>What I'm Looking For</h3>
       <ul>
-        <li>Part-time IT/Tech roles</li>
-        <li>Web development internships</li>
-        <li>Junior software developer roles</li>
-        <li>IT support or tech assistant positions</li>
+        <li>Junior full-stack or backend developer roles</li>
+        <li>Web development internships or placements</li>
+        <li>Part-time IT / tech support roles</li>
       </ul>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <!-- Replaced Resume button with View My Work -->
-        <a class="btn" href="portraits.html">View My Work</a>
-        <a class="btn primary" href="contact.html">Contact Me</a>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:1.25rem">
+        <a class="btn primary" href="projects.html">View My Projects</a>
+        <a class="btn" href="contact.html">Contact Me</a>
       </div>
     </div>
 
-    <div class="card">
-      <img src="assets/images/12.jpg" alt="Vishnu on set">
+    <div class="card profile-card">
+      <div class="avatar-circle">VV</div>
+      <h3 style="margin:0 0 4px">Vishnu Vekaria</h3>
+      <p class="muted" style="margin:0 0 22px;font-size:.95rem">CS Student &amp; Full-Stack Developer</p>
+      <div class="profile-stats">
+        <div class="stat">
+          <span class="stat-num">4+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">3rd</span>
+          <span class="stat-label">Year</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">Sep '26</span>
+          <span class="stat-label">Graduating</span>
+        </div>
+      </div>
+      <div class="profile-links">
+        <a href="https://github.com/V-Vekaria" target="_blank" class="btn">
+          <i class="bi bi-github"></i> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" class="btn">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+      </div>
     </div>
   </div>
 </main>
@@ -111,6 +137,6 @@
   </div>
 </footer>
 
-<script type="module" src="script.js"></script>
+<script type="module" src="js/script.js"></script>
 </body>
 </html>

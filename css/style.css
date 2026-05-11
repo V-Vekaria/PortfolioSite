@@ -211,87 +211,160 @@ footer .social a:hover img { filter: invert(100%); }
   .footer-inner { flex-direction: column; text-align: center; gap: 8px; }
 }
 
-/* ---------- Portraits (Masonry) ---------- */
-.grid.portraits {
-  display: block;       /* override .grid default */
-  column-count: 3;
-  column-gap: 12px;
+/* ===== Hero code illustration ===== */
+.hero-code {
+  border-radius: 14px;
+  box-shadow: 0 24px 64px rgba(0,0,0,.5);
 }
 
-.grid.portraits figure {
-  margin: 0 0 12px;
-  break-inside: avoid;
-}
-
-.grid.portraits img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-/* Responsive breakpoints */
-@media (max-width: 1024px){
-  .grid.portraits { column-count: 2; }
-}
-@media (max-width: 600px){
-  .grid.portraits { column-count: 1; }
-}
-
-/* Lightbox styles */
-/* ===== Lightbox ===== */
-.lightbox{
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,.9);
-  display: flex;                    /* keep layout ready */
-  align-items: center; justify-content: center;
+/* ===== About — profile card ===== */
+.profile-card {
+  padding: 32px 24px;
+  text-align: center;
+  display: flex;
   flex-direction: column;
-  padding: 24px;
-  z-index: 1000;
-
-  /* hidden by default */
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity .2s ease;
+  align-items: center;
 }
 
-.lightbox.open{
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+.avatar-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #00d2ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 14px;
+  box-shadow: 0 0 36px rgba(138,125,255,.35);
 }
 
-.lightbox-img{
-  max-width: min(96vw, 1400px);
-  max-height: calc(100vh - 96px);
-  object-fit: contain;
+.profile-stats {
+  display: flex;
+  gap: 0;
+  width: 100%;
   border-radius: 12px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
-.lightbox .close{ position:absolute; top:16px; right:24px; font-size:2rem; color:#fff; cursor:pointer; }
-.lightbox .prev, .lightbox .next{ position:absolute; top:50%; transform:translateY(-50%); font-size:2.5rem; color:#fff; cursor:pointer; user-select:none; padding:0 10px; }
-.lightbox .prev{ left:10px; } .lightbox .next{ right:10px; }
+.stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 8px;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
 
-
-@media (max-width:720px){
-  .lightbox .prev, .lightbox .next{ display:none; } /* swipe only on mobile */
+.stat-num {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
 }
 
-/* Lock page scroll while lightbox is open */
-body.lb-open{ overflow:hidden; }
-
-/* Blur-up effect */
-img.lazy-blur {
-  filter: blur(20px);
-  transform: scale(1.05);
-  transition: filter 0.6s ease, transform 0.6s ease;
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
 }
 
-img.lazy-blur.loaded {
-  filter: blur(0);
-  transform: scale(1);
+.profile-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ===== Contact — full-width solo card ===== */
+.contact-solo {
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+/* ===== Projects page ===== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 720px) {
+  .projects-grid { grid-template-columns: 1fr; }
+}
+
+.project-card { padding: 22px; }
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.project-header h2 {
+  margin: 6px 0 0;
+  font-size: 1.15rem;
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.status-badge.completed {
+  background: rgba(0, 210, 106, 0.12);
+  color: #00d26a;
+  border: 1px solid rgba(0, 210, 106, 0.3);
+}
+
+.status-badge.in-progress {
+  background: rgba(138, 125, 255, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(138, 125, 255, 0.3);
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  flex-shrink: 0;
+  font-size: 1.1rem;
 }
 
 /* Contact form styles */
@@ -354,54 +427,6 @@ input.invalid, textarea.invalid {
 }
 
 
-.date-wrapper { position: relative; display: flex; align-items: center; }
-.date-wrapper input { width: 100%; padding-right: 40px; }
-.calendar-icon {
-  position: absolute;
-  right: 12px;
-  font-size: 1.2rem;
-  color: #aaa;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-.calendar-icon:hover { color: #1e90ff; }
-
-/* Wrapper so icon sits inside input */
-.date-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.date-wrapper input[type="date"] {
-  width: 100%;
-  padding-right: 40px; /* make room for icon */
-  background-color: #111;
-  color: #fff;
-  border-radius: 8px;
-  border: 1px solid #333;
-}
-
-/* Remove default calendar icon in Chrome/Edge */
-.date-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.date-wrapper input[type="date"] {
-  width: 100%;
-  padding-right: 36px; /* space for icon */
-}
-
-.calendar-icon {
-  position: absolute;
-  right: 10px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  user-select: none;
-}
 
 
 /* Popup styles */
@@ -444,102 +469,3 @@ input.invalid, textarea.invalid {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ==== Flatpickr dark theme override ==== */
-.flatpickr-calendar {
-  background: #141416 !important;
-  border: 1px solid #1e1e24 !important;
-  color: #f7f7f7 !important;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.6) !important;
-}
-
-.flatpickr-day {
-  background: transparent !important;
-  color: #f7f7f7 !important;
-}
-
-.flatpickr-day:hover {
-  background: #2a2a32 !important;
-  border-radius: 6px !important;
-}
-
-.flatpickr-day.today {
-  background: var(--accent) !important;
-  color: #fff !important;
-  border-radius: 6px !important;
-}
-
-.flatpickr-day.selected {
-  background: linear-gradient(135deg, var(--accent), #00d2ff) !important;
-  color: #fff !important;
-  border-radius: 6px !important;
-}
-
-.flatpickr-months, .flatpickr-weekdays {
-  background: #1a1a1f !important;
-  color: #ffffff !important;
-}
-
-.flatpickr-weekday {
-  color: var(--muted) !important;
-}
-
-/* Month and Year text */
-.flatpickr-months .flatpickr-month,
-.flatpickr-months .flatpickr-current-month {
-  color: #000000 !important;
-  font-weight: 500;
-}
-
-.flatpickr-monthDropdown-months,
-.flatpickr-current-month input.cur-year {
-  background: transparent !important;
-  color: #fff !important;
-  font-weight: 500;
-}
-
-/* Arrow icons */
-.flatpickr-months .flatpickr-prev-month svg,
-.flatpickr-months .flatpickr-next-month svg {
-  fill: #fff !important;
-  transition: fill 0.2s ease;
-}
-
-/* Month dropdown fix for dark mode */
-.flatpickr-monthDropdown-months {
-  background: #222 !important; /* match your dark background */
-  color: #fff !important;
-  border: 1px solid #444;
-  border-radius: 6px;
-  padding: 4px;
-}
-
-.flatpickr-monthDropdown-months option {
-  background: #222 !important;
-  color: #fff !important;
-}
-
-/* Remove native select box look */
-.flatpickr-monthDropdown-months {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: transparent !important;
-  color: #fff !important;
-  border: none !important;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 2px 4px;
-  cursor: pointer;
-}
-
-/* Dropdown options */
-.flatpickr-monthDropdown-months option {
-  background: #222 !important;
-  color: #fff !important;
-}
-
-/* Add custom underline or border if you want */
-.flatpickr-monthDropdown-months:focus {
-  outline: none;
-  border-bottom: 1px solid #8b5cf6; /* purple accent */
-}
