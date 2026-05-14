@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 <body>
+<canvas id="particleCanvas"></canvas>
+<div class="cursor-glow"></div>
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="index.html">Vishnu Vekaria</a>
@@ -51,7 +53,11 @@
     <!-- Left: Text -->
     <div>
       <span class="pill">Python · Flask · Azure</span>
-      <h1>Hi, I’m Vishnu — <br>  Software Engineer, CS Student & Junior Full-Stack Developer</h1>
+      <h1>
+        <span class="typewriter">Hi, I’m Vishnu —</span>
+        <span class="typewriter typewriter-delay-1">Software Engineer, CS Student</span>
+        <span class="typewriter typewriter-delay-2">&amp; Junior Full-Stack Developer</span>
+      </h1>
       <p>
         Final-year BSc (Hons) Computer Science student at Ulster University London, 
         graduating September 2026, focused on full-stack and backend engineering. 
@@ -63,7 +69,8 @@
     </div>
 
     <!-- Right: Code illustration -->
-    <div class="hero-code">
+    <div class="hero-code code-editor-3d" id="codeCard">
+      <div class="code-glow"></div>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 390" role="img" aria-label="Code editor illustration" style="width:100%;border-radius:14px;display:block">
         <!-- Window frame -->
         <rect width="520" height="390" rx="14" fill="#141416" stroke="#1e1e24" stroke-width="1"/>
