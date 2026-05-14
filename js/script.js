@@ -56,6 +56,52 @@ window.addEventListener('resize', ()=>{
   });
 })();
 
+/* ===== Typewriter (JS — character by character) ===== */
+(function initTypewriter() {
+  const spans = [...document.querySelectorAll('.typewriter[data-text]')];
+  if (!spans.length) return;
+
+  function typeSpan(span, text, onDone) {
+    span.classList.add('typing');
+    let i = 0;
+    const timer = setInterval(() => {
+      span.textContent = text.slice(0, ++i);
+      if (i >= text.length) {
+        clearInterval(timer);
+        span.classList.remove('typing');
+        span.classList.add('done');
+        onDone && onDone();
+      }
+    }, 55);
+  }
+
+  function typeAll(index) {
+    if (index >= spans.length) return;
+    typeSpan(spans[index], spans[index].dataset.text, () => {
+      setTimeout(() => typeAll(index + 1), 200);
+    });
+  }
+
+  typeAll(0);
+})();
+
+/* ===== Skill Bars ===== */
+(function initSkillBars() {
+  const sections = document.querySelectorAll('.skills-list');
+  if (!sections.length) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(el => observer.observe(el));
+})();
+
 /* ===== UPGRADE 1: Particle Network Background ===== */
 (function initParticles() {
   const canvas = document.getElementById('particleCanvas');

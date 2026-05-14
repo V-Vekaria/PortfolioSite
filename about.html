@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 <body>
+<canvas id="particleCanvas"></canvas>
+<div class="cursor-glow"></div>
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="index.html">Vishnu Vekaria</a>
@@ -68,14 +70,28 @@
       </p>
 
       <h3>Skills</h3>
-      <ul>
-        <li>Python · Flask · REST API design</li>
-        <li>MongoDB · Microsoft Azure (Functions, Cosmos DB, Blob Storage)</li>
-        <li>HTML · CSS · JavaScript</li>
-        <li>Git &amp; GitHub · GitHub Actions · CI/CD</li>
-        <li>Responsive Web Design</li>
-        <li>Systems Security · Computer Vision foundations</li>
-      </ul>
+      <div class="skills-list">
+        <div class="skill-item">
+          <div class="skill-label"><span>Python · Flask · REST API</span><span>90%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>MongoDB · Azure</span><span>80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>HTML · CSS · JavaScript</span><span>85%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Git · GitHub Actions · CI/CD</span><span>75%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Systems Security · Cryptography</span><span>70%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+        </div>
+      </div>
 
       <h3>What I'm Looking For</h3>
       <ul>

@@ -18,6 +18,8 @@
   </style>
 </head>
 <body>
+<canvas id="particleCanvas"></canvas>
+<div class="cursor-glow"></div>
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="index.html">Vishnu Vekaria</a>
@@ -73,7 +75,7 @@
         <textarea id="message" name="message" required placeholder="Tell me about the opportunity or project…"></textarea>
         <span id="messageError" class="error"></span>
 
-        <button class="btn primary" type="submit">Send Message</button>
+        <button class="btn primary" id="submitBtn" type="submit">Send Message</button>
       </form>
     </div>
   </div>
@@ -150,6 +152,10 @@
     });
     if (!ok) return;
 
+    const btn = document.getElementById("submitBtn");
+    btn.classList.add("sending");
+    btn.textContent = "Sending…";
+
     try {
       const res = await fetch("https://formspree.io/f/xeorkqkl", {
         method: "POST",
@@ -158,11 +164,17 @@
       });
       if (res.ok) {
         form.reset();
+        btn.textContent = "✓ Sent!";
+        setTimeout(() => { btn.textContent = "Send Message"; btn.classList.remove("sending"); }, 3000);
         showPopup("success", "✅ Sent!", "Your message has been sent. I'll get back to you soon.");
       } else {
+        btn.textContent = "Send Message";
+        btn.classList.remove("sending");
         showPopup("error", "⚠️ Error", "Something went wrong. Please try again.");
       }
     } catch (err) {
+      btn.textContent = "Send Message";
+      btn.classList.remove("sending");
       showPopup("error", "⚠️ Network error", "Please check your connection.");
     }
   });
