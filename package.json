@@ -1,0 +1,10 @@
+{
+  "name": "vishnu-vekaria-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static portfolio website for Vishnu Vekaria.",
+  "scripts": {
+    "build": "node scripts/validate-static-site.cjs"
+  },
+  "devDependencies": {}
+}

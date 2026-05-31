@@ -11,7 +11,6 @@
   --accent: #8b5cf6;
   --accent-2: #6d28d9;
   --accent-glow: #9333ea;
-  --cyan: #22d3ee;
   --success: #52d38a;
   --warning: #f5c76b;
   --danger: #ff6b7a;
@@ -390,7 +389,7 @@ nav a.active {
   border-radius: 22px;
   background:
     radial-gradient(circle at 88% 8%, rgba(139, 92, 246, 0.13), transparent 18rem),
-    radial-gradient(circle at 12% 88%, rgba(34, 211, 238, 0.025), transparent 14rem),
+    radial-gradient(circle at 12% 88%, rgba(168, 85, 247, 0.045), transparent 14rem),
     linear-gradient(180deg, rgba(17, 24, 39, 0.9), rgba(8, 10, 18, 0.94));
   box-shadow: var(--shadow), 0 0 48px rgba(124, 58, 237, 0.08);
 }
@@ -750,6 +749,15 @@ nav a.active {
   color: var(--muted);
 }
 
+.contact-note a {
+  color: #d8b4fe;
+  font-weight: 750;
+}
+
+.contact-note a:hover {
+  color: var(--ink);
+}
+
 form {
   display: grid;
   gap: 10px;
@@ -1023,6 +1031,7 @@ textarea:focus-visible {
   .mobile {
     display: block;
     position: absolute;
+    z-index: 2;
     left: 12px;
     right: 12px;
     top: 68px;
@@ -1052,6 +1061,7 @@ textarea:focus-visible {
 
   .nav-overlay {
     position: fixed;
+    z-index: 1;
     inset: 68px 0 0;
     background: rgba(0, 0, 0, 0.42);
   }
