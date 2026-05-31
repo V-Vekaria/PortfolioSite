@@ -1,80 +1,74 @@
-# Vishnu Vekaria — Developer Portfolio
+# Vishnu Vekaria - Developer Portfolio
 
-Personal portfolio website built from scratch — no frameworks, no templates. A fully interactive CS developer site with particle animations, 3D effects, and scroll-driven experiences.
+Personal portfolio website for job hunting, London tech networking, and practical project conversations.
 
-**Live site → [vishnupro.netlify.app](https://vishnupro.netlify.app)**
+Live site: [vishnupro.netlify.app](https://vishnupro.netlify.app)
 
----
+## Positioning
+
+Vishnu Vekaria is a BSc (Hons) Computing Systems student at Ulster University in London, building practical full-stack, backend, and AI product projects.
+
+The site is intentionally recruiter-friendly: concise copy, clear project context, grouped skills, responsive layouts, and credible student-level positioning.
 
 ## Pages
 
-| Page | Description |
+| Page | Purpose |
 |---|---|
-| **Home** | Hero with typewriter animation, interactive 3D code card, particle background |
-| **Projects** | Glassmorphism cards with hover lift — SaaS API, Azure platform, security dissertation, this site |
-| **About** | Animated skill bars, stat counters (4+ projects / 3rd year / Sep '26), profile card |
-| **Contact** | Validated contact form with Formspree — live sending state and success feedback |
+| Home | Hero, proof cards, featured projects, current focus, skills, and CTA |
+| Projects | Detailed project cards with context, build notes, stack, status, and links |
+| About | Student background, current focus, grouped skills, and profile links |
+| Contact | Opportunity-focused CTA and Formspree contact form |
 
----
+## Featured Projects
+
+- PersonaPage - AI Personal Identity Page Demo
+- SaaS Usage Monitoring API
+- Privacy-Preserving File Transfer Platform
+- Developer Portfolio Website
 
 ## Tech Stack
 
 | Layer | Technology |
 |---|---|
 | Markup | HTML5 |
-| Styling | CSS3 (custom properties, backdrop-filter, keyframe animations) |
-| Interactivity | Vanilla JavaScript (Canvas API, IntersectionObserver, ES modules) |
+| Styling | CSS3 custom properties, responsive grids, lightweight animation |
+| Interactivity | Vanilla JavaScript, Canvas API, IntersectionObserver |
+| Icons | Bootstrap Icons CDN |
 | Form handling | Formspree |
-| Version control | Git + GitHub |
-| Hosting | Netlify (continuous deployment on push to `main`) |
-
----
-
-## Interactive Features
-
-- **Particle network** — 60-particle canvas, mouse-reactive connections, hidden on touch devices
-- **Typewriter hero** — JS character-by-character reveal with blinking cursor
-- **3D code card** — perspective tilt + radial glow that follows the mouse
-- **Glassmorphism project cards** — `backdrop-filter` blur with lift and border glow on hover
-- **Scroll reveal** — IntersectionObserver fades every card and section into view
-- **Animated stat counters** — numbers count up when scrolled into view
-- **Animated skill bars** — progress bars slide in on scroll (About page)
-- **Cursor glow** — subtle radial gradient that follows the pointer
-- **In-progress badge pulse** — animated dot on active project badges
-- **Contact form states** — input focus glow, "Sending…" → "✓ Sent!" button feedback
-
----
+| Hosting | Netlify |
 
 ## Run Locally
 
-No build step — plain HTML/CSS/JS.
+No build step is required.
 
 ```bash
-git clone https://github.com/V-Vekaria/PortfolioSite.git
 cd PortfolioSite
-start index.html   # Windows
-open index.html    # macOS
+start index.html
 ```
 
----
+For a local HTTP preview:
+
+```bash
+python -m http.server 4173
+```
+
+Then open `http://localhost:4173`.
 
 ## Project Structure
 
-```
+```text
 PortfolioSite/
-├── index.html        # Home — hero, typewriter, 3D code card
-├── projects.html     # Projects — glassmorphism cards
-├── about.html        # About — skill bars, stat counters
-├── contact.html      # Contact — validated form + Formspree
+├── index.html        # Home page
+├── projects.html     # Projects page
+├── about.html        # About page
+├── contact.html      # Contact page and form behavior
 ├── css/
-│   └── style.css     # All styles including animations and upgrades
+│   └── style.css     # Shared visual system and responsive styling
 └── js/
-    └── script.js     # Particles, tilt, reveal, counters, typewriter
+    └── script.js     # Nav, active links, reveal effects, particles, cursor glow
 ```
-
----
 
 ## Author
 
-**Vishnu Vekaria** — BSc (Hons) Computer Science, Ulster University London (Sep 2026)  
-[github.com/V-Vekaria](https://github.com/V-Vekaria) · [linkedin.com/in/vekaria-vishnu](https://www.linkedin.com/in/vekaria-vishnu/) · [vishnupro.netlify.app](https://vishnupro.netlify.app)
+Vishnu Vekaria  
+[GitHub](https://github.com/V-Vekaria) | [LinkedIn](https://www.linkedin.com/in/vekaria-vishnu/) | [Portfolio](https://vishnupro.netlify.app)

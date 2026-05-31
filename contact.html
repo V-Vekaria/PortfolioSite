@@ -3,34 +3,19 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Contact — Vishnu Vekaria</title>
+  <meta name="description" content="Contact Vishnu Vekaria for junior software, backend, AI product, internship, placement, and London tech networking opportunities."/>
+  <title>Contact - Vishnu Vekaria</title>
   <link rel="stylesheet" href="css/style.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
-  <style>
-    .popup-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.6);
-      justify-content:center; align-items:center; z-index:9999; }
-    .popup-box { background:#141416; color:#fff; border-radius:12px; padding:24px; max-width:320px;
-      text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.4); }
-    .popup-box.success { border:2px solid #00d26a; }
-    .popup-box.error   { border:2px solid #e63946; }
-    .error.show { opacity:1; max-height:60px; }
-  </style>
 </head>
 <body>
-<canvas id="particleCanvas"></canvas>
-<div class="cursor-glow"></div>
+<canvas id="particleCanvas" aria-hidden="true"></canvas>
+<div class="cursor-glow" aria-hidden="true"></div>
+
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="index.html">Vishnu Vekaria</a>
-
-    <button class="hamburger" id="menuBtn" type="button"
-            aria-label="Open menu"
-            aria-expanded="false"
-            aria-controls="mobileMenu">
-      <span></span>
-    </button>
-
+    <button class="hamburger" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
     <nav aria-label="Primary">
       <ul class="desktop">
         <li><a href="index.html">Home</a></li>
@@ -38,7 +23,6 @@
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-
       <div class="mobile" id="mobileMenu" hidden>
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -52,70 +36,90 @@
   <div id="navOverlay" class="nav-overlay" hidden></div>
 </header>
 
-<main class="section">
-  <div class="container">
-    <div class="card contact-solo">
-      <h1>Contact</h1>
-      <p class="muted">Whether you'd like to discuss a job opportunity, tech project, internship, or collaboration, feel free to reach out. I usually reply within 24 hours.</p>
-
-      <form id="contactForm" novalidate>
-        <label for="name">Name</label>
-        <input id="name" name="name" required placeholder="Your name"/>
-        <span id="nameError" class="error"></span>
-
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required placeholder="you@example.com"/>
-        <span id="emailError" class="error"></span>
-
-        <label for="subject">Subject</label>
-        <input id="subject" name="subject" required placeholder="Job opportunity / Collaboration / Other"/>
-        <span id="subjectError" class="error"></span>
-
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required placeholder="Tell me about the opportunity or project…"></textarea>
-        <span id="messageError" class="error"></span>
-
-        <button class="btn primary" id="submitBtn" type="submit">Send Message</button>
-      </form>
+<main>
+  <section class="section page-hero">
+    <div class="container narrow reveal">
+      <span class="eyebrow">Contact</span>
+      <h1>Open to junior software roles, internships, placements, AI/product opportunities, and London tech networking.</h1>
+      <p class="muted">Best route: connect on LinkedIn for a quick conversation, or use the form for project and role details.</p>
+      <div class="hero-actions">
+        <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener" class="btn primary"><i class="bi bi-linkedin"></i> Connect on LinkedIn</a>
+        <a href="mailto:vishnuvekaria08@gmail.com" class="btn"><i class="bi bi-envelope"></i> Email Me</a>
+        <a href="projects.html" class="btn">View Projects</a>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="section compact">
+    <div class="container contact-grid">
+      <aside class="card text-card reveal">
+        <h2>Good reasons to reach out</h2>
+        <ul class="clean-list">
+          <li>Junior software or backend developer opportunities</li>
+          <li>Internship or placement roles</li>
+          <li>AI/product project collaboration</li>
+          <li>London Tech Week or networking follow-up</li>
+          <li>Portfolio, project, or technical opportunities</li>
+        </ul>
+        <p class="contact-note">If you are a recruiter or hiring manager, LinkedIn is the fastest way to start. Email also works: <a href="mailto:vishnuvekaria08@gmail.com">vishnuvekaria08@gmail.com</a>.</p>
+      </aside>
+
+      <div class="card contact-solo reveal reveal-delay-1">
+        <h2>Send a message</h2>
+        <form id="contactForm" novalidate>
+          <label for="name">Name</label>
+          <input id="name" name="name" autocomplete="name" required placeholder="Your name"/>
+          <span id="nameError" class="error"></span>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"/>
+          <span id="emailError" class="error"></span>
+
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" required placeholder="Job opportunity / Networking / Collaboration"/>
+          <span id="subjectError" class="error"></span>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="Tell me about the opportunity, project, or conversation."></textarea>
+          <span id="messageError" class="error"></span>
+
+          <button class="btn primary" id="submitBtn" type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
 </main>
 
 <div class="popup-overlay" id="popup">
   <div class="popup-box" id="popupBox">
     <h2 id="popupTitle"></h2>
     <p id="popupMessage"></p>
-    <button onclick="document.getElementById('popup').style.display='none'">OK</button>
+    <button type="button" id="popupClose">OK</button>
   </div>
 </div>
 
 <footer>
   <div class="container footer-inner">
-    <p>© <span id="year"></span> Vishnu Vekaria — All Rights Reserved</p>
+    <p>&copy; <span id="year"></span> Vishnu Vekaria - All Rights Reserved</p>
     <div class="social">
-      <a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" aria-label="Instagram">
-        <i class="bi bi-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" aria-label="LinkedIn">
-        <i class="bi bi-linkedin"></i>
-      </a>
-      <a href="https://github.com/V-Vekaria" target="_blank" aria-label="GitHub">
-        <i class="bi bi-github"></i>
-      </a>
+      <a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/V-Vekaria" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+      <a href="mailto:vishnuvekaria08@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
     </div>
   </div>
 </footer>
 
 <script type="module" src="js/script.js"></script>
-
 <script>
-  const popup     = document.getElementById("popup");
-  const popupBox  = document.getElementById("popupBox");
+  const popup = document.getElementById("popup");
+  const popupBox = document.getElementById("popupBox");
+  const popupClose = document.getElementById("popupClose");
 
   function showPopup(type, title, message) {
     popupBox.classList.remove("success", "error");
     popupBox.classList.add(type);
-    document.getElementById("popupTitle").textContent   = title;
+    document.getElementById("popupTitle").textContent = title;
     document.getElementById("popupMessage").textContent = message;
     popup.style.display = "flex";
     setTimeout(() => popup.style.display = "none", 4000);
@@ -130,31 +134,33 @@
   }
 
   function validateField(field) {
-    const v = field.value.trim();
-    if (field.id === "name")    return setError(field, v ? (/^[A-Za-z\s]+$/.test(v) ? "" : "Letters only.") : "Please enter a name.");
-    if (field.id === "email")   return setError(field, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : "Invalid email.");
-    if (field.id === "subject") return setError(field, v ? "" : "Please enter a subject.");
-    if (field.id === "message") return setError(field, v ? "" : "Please enter a message.");
+    const value = field.value.trim();
+    if (field.id === "name") return setError(field, value ? "" : "Please enter your name.");
+    if (field.id === "email") return setError(field, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "" : "Please enter a valid email.");
+    if (field.id === "subject") return setError(field, value ? "" : "Please enter a subject.");
+    if (field.id === "message") return setError(field, value ? "" : "Please enter a message.");
   }
 
+  popupClose?.addEventListener("click", () => popup.style.display = "none");
+
   const form = document.getElementById("contactForm");
-  form.querySelectorAll("input, textarea").forEach(f => {
-    f.addEventListener("input", () => validateField(f));
-    f.addEventListener("blur",  () => validateField(f));
+  form.querySelectorAll("input, textarea").forEach(field => {
+    field.addEventListener("input", () => validateField(field));
+    field.addEventListener("blur", () => validateField(field));
   });
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
     let ok = true;
-    form.querySelectorAll("input, textarea").forEach(f => {
-      validateField(f);
-      if (f.classList.contains("invalid")) ok = false;
+    form.querySelectorAll("input, textarea").forEach(field => {
+      validateField(field);
+      if (field.classList.contains("invalid")) ok = false;
     });
     if (!ok) return;
 
     const btn = document.getElementById("submitBtn");
     btn.classList.add("sending");
-    btn.textContent = "Sending…";
+    btn.textContent = "Sending...";
 
     try {
       const res = await fetch("https://formspree.io/f/xeorkqkl", {
@@ -164,32 +170,20 @@
       });
       if (res.ok) {
         form.reset();
-        btn.textContent = "✓ Sent!";
+        btn.textContent = "Sent";
         setTimeout(() => { btn.textContent = "Send Message"; btn.classList.remove("sending"); }, 3000);
-        showPopup("success", "✅ Sent!", "Your message has been sent. I'll get back to you soon.");
+        showPopup("success", "Sent", "Your message has been sent. I will get back to you soon.");
       } else {
         btn.textContent = "Send Message";
         btn.classList.remove("sending");
-        showPopup("error", "⚠️ Error", "Something went wrong. Please try again.");
+        showPopup("error", "Error", "Something went wrong. Please try again.");
       }
     } catch (err) {
       btn.textContent = "Send Message";
       btn.classList.remove("sending");
-      showPopup("error", "⚠️ Network error", "Please check your connection.");
+      showPopup("error", "Network error", "Please check your connection.");
     }
   });
-
-  (function forceCloseNav() {
-    const overlay    = document.getElementById("navOverlay");
-    const mobileMenu = document.getElementById("mobileMenu");
-    function closeNav() {
-      overlay?.setAttribute("hidden", "");
-      mobileMenu?.setAttribute("hidden", "");
-      document.body.classList.remove("nav-open");
-    }
-    closeNav();
-    window.addEventListener("pageshow", closeNav);
-  })();
 </script>
 </body>
 </html>

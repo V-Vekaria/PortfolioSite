@@ -3,26 +3,21 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Vishnu Vekaria — Portfolio</title>
+  <meta name="description" content="Vishnu Vekaria - Computing Systems student building practical full-stack and AI product projects in London."/>
+  <title>Vishnu Vekaria - Portfolio</title>
   <link rel="stylesheet" href="css/style.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 <body>
-<canvas id="particleCanvas"></canvas>
-<div class="cursor-glow"></div>
+<canvas id="particleCanvas" aria-hidden="true"></canvas>
+<div class="cursor-glow" aria-hidden="true"></div>
+
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="index.html">Vishnu Vekaria</a>
-
-    <!-- Hamburger button -->
-    <button class="hamburger" id="menuBtn"
-            aria-label="Open menu"
-            aria-expanded="false"
-            aria-controls="mobileMenu">
+    <button class="hamburger" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span>
     </button>
-
-    <!-- Desktop links -->
     <nav aria-label="Primary">
       <ul class="desktop">
         <li><a href="index.html">Home</a></li>
@@ -30,8 +25,6 @@
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-
-      <!-- Mobile panel -->
       <div class="mobile" id="mobileMenu" hidden>
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -42,112 +35,224 @@
       </div>
     </nav>
   </div>
-
-  <!-- Clickable overlay for mobile menu -->
   <div id="navOverlay" class="nav-overlay" hidden></div>
 </header>
 
-<main class="section">
-  <div class="container hero-grid" style="display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:32px">
-    
-    <!-- Left: Text -->
-    <div>
-      <span class="pill">Python · Flask · Azure</span>
-      <h1>
-        <span class="typewriter" data-text="Hi, I’m Vishnu —"></span>
-        <span class="typewriter" data-text="Software Engineer, CS Student"></span>
-        <span class="typewriter" data-text="& Junior Full-Stack Developer"></span>
-      </h1>
-      <p>
-        Final-year BSc (Hons) Computer Science student at Ulster University London, 
-        graduating September 2026, focused on full-stack and backend engineering. 
-        I’m seeking part-time or entry-level opportunities in web development, 
-        IT support, or software roles where I can apply my skills and grow professionally.<br><br>
-      </p>
-      <a href="projects.html" class="btn primary">View Projects</a>
-      <a href="contact.html" class="btn">Contact Me</a>
-    </div>
+<main>
+  <section class="hero section">
+    <div class="container hero-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">London based student builder</span>
+        <h1>Vishnu Vekaria</h1>
+        <p class="hero-subtitle">Computing Systems student building practical full-stack and AI product projects.</p>
+        <p class="hero-body">
+          I am a BSc (Hons) Computing Systems student at Ulster University in London, focused on full-stack development,
+          backend APIs, and AI-enabled product demos. I am building projects that connect software engineering, data,
+          privacy, and product thinking.
+        </p>
+        <div class="hero-actions">
+          <a href="projects.html" class="btn primary">View Projects</a>
+          <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener" class="btn">
+            <i class="bi bi-linkedin"></i> Connect on LinkedIn
+          </a>
+          <a href="contact.html" class="btn">Contact Me</a>
+        </div>
+      </div>
 
-    <!-- Right: Code illustration -->
-    <div class="hero-code code-editor-3d" id="codeCard">
-      <div class="code-glow"></div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 390" role="img" aria-label="Code editor illustration" style="width:100%;border-radius:14px;display:block">
-        <!-- Window frame -->
-        <rect width="520" height="390" rx="14" fill="#141416" stroke="#1e1e24" stroke-width="1"/>
-        <!-- Title bar -->
-        <rect width="520" height="44" rx="14" fill="#1a1a1f"/>
-        <rect y="28" width="520" height="16" fill="#1a1a1f"/>
-        <!-- Traffic lights -->
-        <circle cx="22" cy="22" r="7" fill="#ff5f57"/>
-        <circle cx="46" cy="22" r="7" fill="#febc2e"/>
-        <circle cx="70" cy="22" r="7" fill="#28c840"/>
-        <!-- File tab -->
-        <rect x="100" y="8" width="128" height="28" rx="6" fill="#0f0f10" stroke="#2a2a35"/>
-        <text x="164" y="26" text-anchor="middle" fill="#b8bbc5" font-family="monospace" font-size="11">developer.py</text>
-        <!-- Line numbers gutter -->
-        <rect x="0" y="44" width="42" height="346" fill="#111113"/>
-        <!-- Line numbers -->
-        <text x="30" y="74"  text-anchor="end" fill="#3a3a4a" font-family="monospace" font-size="12">1</text>
-        <text x="30" y="98"  text-anchor="end" fill="#3a3a4a" font-family="monospace" font-size="12">2</text>
-        <text x="30" y="122" text-anchor="end" fill="#3a3a4a" font-family="monospace" font-size="12">3</text>
-        <text x="30" y="146" text-anchor="end" fill="#3a3a4a" font-family="monospace" font-size="12">4</text>
-        <text x="30" y="170" text-anchor="end" fill="#3a3a4a" font-family="monospace" font-size="12">5</text>
-        <text x="30" y="194" text-anchor="end" fill="#3a3a4a" font-family="monospace" font-size="12">6</text>
-        <text x="30" y="218" text-anchor="end" fill="#3a3a4a" font-family="monospace" font-size="12">7</text>
-        <text x="30" y="242" text-anchor="end" fill="#3a3a4a" font-family="monospace" font-size="12">8</text>
-        <text x="30" y="266" text-anchor="end" fill="#3a3a4a" font-family="monospace" font-size="12">9</text>
-        <text x="30" y="290" text-anchor="end" fill="#3a3a4a" font-family="monospace" font-size="12">10</text>
-        <text x="30" y="314" text-anchor="end" fill="#3a3a4a" font-family="monospace" font-size="12">11</text>
-        <text x="30" y="338" text-anchor="end" fill="#3a3a4a" font-family="monospace" font-size="12">12</text>
-        <text x="30" y="362" text-anchor="end" fill="#3a3a4a" font-family="monospace" font-size="12">13</text>
-        <!-- Code: line 1 -->
-        <text x="58" y="74" font-family="monospace" font-size="13"><tspan fill="#c792ea">class </tspan><tspan fill="#f7f7f7">Developer:</tspan></text>
-        <!-- Code: line 2 blank -->
-        <!-- Code: line 3 -->
-        <text x="74" y="122" font-family="monospace" font-size="13"><tspan fill="#b8bbc5">name </tspan><tspan fill="#f7f7f7">= </tspan><tspan fill="#c3e88d">"Vishnu Vekaria"</tspan></text>
-        <!-- Code: line 4 -->
-        <text x="74" y="146" font-family="monospace" font-size="13"><tspan fill="#b8bbc5">role </tspan><tspan fill="#f7f7f7">= </tspan><tspan fill="#c3e88d">"Full-Stack Developer"</tspan></text>
-        <!-- Code: line 5 -->
-        <text x="74" y="170" font-family="monospace" font-size="13"><tspan fill="#b8bbc5">stack </tspan><tspan fill="#f7f7f7">= [</tspan><tspan fill="#c3e88d">"Python"</tspan><tspan fill="#f7f7f7">, </tspan><tspan fill="#c3e88d">"Flask"</tspan><tspan fill="#f7f7f7">, </tspan><tspan fill="#c3e88d">"Azure"</tspan><tspan fill="#f7f7f7">]</tspan></text>
-        <!-- Code: line 6 -->
-        <text x="74" y="194" font-family="monospace" font-size="13"><tspan fill="#b8bbc5">graduating </tspan><tspan fill="#f7f7f7">= </tspan><tspan fill="#f78c6c">2026</tspan></text>
-        <!-- Code: line 7 blank -->
-        <!-- Code: line 8 -->
-        <text x="74" y="242" font-family="monospace" font-size="13"><tspan fill="#c792ea">def </tspan><tspan fill="#82aaff">hire</tspan><tspan fill="#f7f7f7">(self):</tspan></text>
-        <!-- Code: line 9 -->
-        <text x="90" y="266" font-family="monospace" font-size="13"><tspan fill="#c792ea">return </tspan><tspan fill="#c3e88d">"Great things get built"</tspan></text>
-        <!-- Code: line 10 blank -->
-        <!-- Code: line 11 -->
-        <text x="58" y="314" font-family="monospace" font-size="13"><tspan fill="#b8bbc5">vishnu </tspan><tspan fill="#f7f7f7">= </tspan><tspan fill="#f7f7f7">Developer()</tspan></text>
-        <!-- Code: line 12 -->
-        <text x="58" y="338" font-family="monospace" font-size="13"><tspan fill="#b8bbc5">vishnu</tspan><tspan fill="#f7f7f7">.</tspan><tspan fill="#82aaff">hire</tspan><tspan fill="#f7f7f7">()</tspan></text>
-        <!-- Code: line 13 cursor -->
-        <rect x="58" y="349" width="9" height="16" fill="#8a7dff">
-          <animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite"/>
-        </rect>
-      </svg>
+      <aside class="hero-panel reveal reveal-delay-1" aria-label="Portfolio summary">
+        <div class="panel-topline">Portfolio focus</div>
+        <h2>Practical software projects across APIs, AI demos, and privacy-aware systems.</h2>
+        <p>Built to support recruiter conversations, London tech networking, and junior software/product opportunities.</p>
+        <ul class="hero-proof-list">
+          <li>AI identity-page demo live on Vercel</li>
+          <li>Coursework REST API with auth and MongoDB</li>
+          <li>Final Year Project focused on secure file transfer</li>
+        </ul>
+        <div class="mini-stack">
+          <span>Python</span>
+          <span>Flask</span>
+          <span>MongoDB</span>
+          <span>Next.js</span>
+          <span>TypeScript</span>
+          <span>OpenAI API</span>
+        </div>
+      </aside>
     </div>
-  </div>
+  </section>
+
+  <section class="section compact">
+    <div class="container proof-grid">
+      <article class="card proof-card reveal">
+        <span class="icon-chip"><i class="bi bi-mortarboard"></i></span>
+        <h2>Student Builder</h2>
+        <p>Final-year Computing Systems student applying university learning through practical software projects.</p>
+      </article>
+      <article class="card proof-card reveal reveal-delay-1">
+        <span class="icon-chip"><i class="bi bi-code-slash"></i></span>
+        <h2>Full-Stack &amp; Backend</h2>
+        <p>Building with Python, Flask, MongoDB, REST APIs, JavaScript, Next.js, Tailwind, and deployment tools.</p>
+      </article>
+      <article class="card proof-card reveal reveal-delay-2">
+        <span class="icon-chip"><i class="bi bi-stars"></i></span>
+        <h2>AI/Product Direction</h2>
+        <p>Exploring how AI can improve personal branding, productivity, identity pages, and user-facing products.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="featured-projects">
+    <div class="container">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Featured work</span>
+        <h2>Projects Recruiters Can Scan Quickly</h2>
+        <p>Practical student projects across AI product demos, backend APIs, and security-aware systems.</p>
+      </div>
+
+      <div class="featured-grid">
+        <article class="card project-card reveal">
+          <div class="project-header">
+            <div>
+              <span class="status-badge in-progress">Demo / In progress</span>
+              <h3>PersonaPage - AI Personal Identity Page Demo</h3>
+            </div>
+            <a href="https://personapage-app.vercel.app/" target="_blank" rel="noopener" class="btn btn-icon" aria-label="View PersonaPage live demo">
+              <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+          </div>
+          <p><strong>Context:</strong> Different audiences often need different versions of a personal profile.</p>
+          <p><strong>Built:</strong> An AI-powered identity page demo for students, builders, developers, and freelancers preparing for recruiters, collaborators, networking contacts, or clients.</p>
+          <div class="tech-tags">
+            <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS</span><span class="tag">Supabase</span><span class="tag">OpenAI API</span><span class="tag">Vercel</span>
+          </div>
+        </article>
+
+        <article class="card project-card reveal reveal-delay-1">
+          <div class="project-header">
+            <div>
+              <span class="status-badge completed">Completed coursework</span>
+              <h3>SaaS Usage Monitoring API</h3>
+            </div>
+            <a href="https://github.com/V-Vekaria/COM661-FullStack-Backend" target="_blank" rel="noopener" class="btn btn-icon" aria-label="View SaaS Usage Monitoring API repository">
+              <i class="bi bi-github"></i>
+            </a>
+          </div>
+          <div class="project-detail compact-detail">
+            <p><strong>Context:</strong> SaaS usage and admin monitoring flows.</p>
+            <p><strong>Built:</strong> Flask/MongoDB REST API with auth, role-based access, and endpoint testing.</p>
+          </div>
+          <div class="tech-tags">
+            <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MongoDB</span><span class="tag">bcrypt</span><span class="tag">REST API</span><span class="tag">Postman</span>
+          </div>
+        </article>
+
+        <article class="card project-card reveal reveal-delay-2">
+          <div class="project-header">
+            <div>
+              <span class="status-badge in-progress">Final Year Project</span>
+              <h3>Privacy-Preserving File Transfer Platform</h3>
+            </div>
+            <a href="https://github.com/V-Vekaria/privacy-preserving-file-transfer-platform" target="_blank" rel="noopener" class="btn btn-icon" aria-label="View Privacy-Preserving File Transfer Platform repository">
+              <i class="bi bi-github"></i>
+            </a>
+          </div>
+          <div class="project-detail compact-detail">
+            <p><strong>Context:</strong> Secure transfer systems need insight without exposing file contents.</p>
+            <p><strong>Building:</strong> Client-side privacy principles plus metadata-based anomaly analysis.</p>
+          </div>
+          <div class="tech-tags">
+            <span class="tag">Python</span><span class="tag">Security</span><span class="tag">Metadata analysis</span><span class="tag">Anomaly detection</span><span class="tag">System design</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section split-section">
+    <div class="container split-grid">
+      <article class="card focus-card reveal">
+        <span class="eyebrow">Current focus</span>
+        <h2>Building for clearer networking conversations</h2>
+        <p>
+          I am currently improving my portfolio, preparing for London Tech Week networking, and building practical
+          projects that demonstrate software engineering, AI product thinking, and problem-solving ability.
+        </p>
+        <p>
+          I am especially interested in opportunities where I can contribute as a junior developer, AI product builder,
+          backend/API developer, or technical team member.
+        </p>
+      </article>
+
+      <article class="card about-card reveal reveal-delay-1">
+        <span class="eyebrow">About</span>
+        <h2>Practical, credible, still learning</h2>
+        <p>
+          I am still building, learning, testing ideas, and improving through
+          real projects that combine backend systems, APIs, AI tools, frontend delivery, and product thinking.
+        </p>
+        <a href="about.html" class="text-link">Read more about me <i class="bi bi-arrow-right"></i></a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Skills</span>
+        <h2>Tools I Am Actively Using</h2>
+      </div>
+      <div class="skills-grid reveal">
+        <div class="skill-group">
+          <h3>Languages &amp; Core Tools</h3>
+          <div class="tech-tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">SQL basics</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Backend &amp; APIs</h3>
+          <div class="tech-tags"><span class="tag">Flask</span><span class="tag">REST APIs</span><span class="tag">MongoDB</span><span class="tag">Authentication</span><span class="tag">RBAC</span><span class="tag">Postman</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Frontend &amp; Product Demos</h3>
+          <div class="tech-tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Tailwind CSS</span><span class="tag">Responsive design</span><span class="tag">Vercel</span><span class="tag">Netlify</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>AI &amp; Product Direction</h3>
+          <div class="tech-tags"><span class="tag">OpenAI API</span><span class="tag">Prompt design</span><span class="tag">AI-assisted prototyping</span><span class="tag">Product thinking</span><span class="tag">User positioning</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Workflow</h3>
+          <div class="tech-tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">Documentation</span><span class="tag">Testing basics</span><span class="tag">Deployment basics</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-section">
+    <div class="container">
+      <div class="card cta-card reveal">
+        <span class="eyebrow">Contact</span>
+        <h2>Open to junior software, backend, AI/product, internship, and networking conversations.</h2>
+        <p>For the fastest context, send a LinkedIn message and mention the project or opportunity you want to discuss.</p>
+        <div class="hero-actions">
+          <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener" class="btn primary"><i class="bi bi-linkedin"></i> Connect on LinkedIn</a>
+          <a href="mailto:vishnuvekaria08@gmail.com" class="btn"><i class="bi bi-envelope"></i> Email Me</a>
+          <a href="contact.html" class="btn">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="container footer-inner">
-    <p>© <span id="year"></span> Vishnu Vekaria — All Rights Reserved</p>
+    <p>&copy; <span id="year"></span> Vishnu Vekaria - All Rights Reserved</p>
     <div class="social">
-      <a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" aria-label="Instagram">
-        <i class="bi bi-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" aria-label="LinkedIn">
-        <i class="bi bi-linkedin"></i>
-      </a>
-      <a href="https://github.com/V-Vekaria" target="_blank" aria-label="GitHub">
-        <i class="bi bi-github"></i>
-      </a>
+      <a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/V-Vekaria" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+      <a href="mailto:vishnuvekaria08@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
     </div>
   </div>
 </footer>
 
-
-  <script type="module" src="js/script.js"></script>
+<script type="module" src="js/script.js"></script>
 </body>
 </html>

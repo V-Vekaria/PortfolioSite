@@ -3,24 +3,19 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Projects — Vishnu Vekaria</title>
+  <meta name="description" content="Projects by Vishnu Vekaria across AI product demos, backend APIs, and privacy-aware systems."/>
+  <title>Projects - Vishnu Vekaria</title>
   <link rel="stylesheet" href="css/style.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 <body>
-<canvas id="particleCanvas"></canvas>
-<div class="cursor-glow"></div>
+<canvas id="particleCanvas" aria-hidden="true"></canvas>
+<div class="cursor-glow" aria-hidden="true"></div>
+
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="index.html">Vishnu Vekaria</a>
-
-    <button class="hamburger" id="menuBtn"
-            aria-label="Open menu"
-            aria-expanded="false"
-            aria-controls="mobileMenu">
-      <span></span>
-    </button>
-
+    <button class="hamburger" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
     <nav aria-label="Primary">
       <ul class="desktop">
         <li><a href="index.html">Home</a></li>
@@ -28,7 +23,6 @@
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-
       <div class="mobile" id="mobileMenu" hidden>
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -42,140 +36,92 @@
   <div id="navOverlay" class="nav-overlay" hidden></div>
 </header>
 
-<main class="section">
-  <div class="container">
-    <span class="pill">Coursework · Side Projects · Open Source</span>
-    <h1>Projects</h1>
-    <p class="muted" style="margin-bottom:2rem">A selection of things I've built — from university coursework to personal projects.</p>
+<main>
+  <section class="section page-hero">
+    <div class="container narrow reveal">
+      <span class="eyebrow">Projects</span>
+      <h1>Practical projects across AI product demos, backend APIs, and privacy-aware systems.</h1>
+      <p class="muted">Concise project snapshots for recruiters, collaborators, and networking conversations.</p>
+    </div>
+  </section>
 
-    <div class="projects-grid">
-
-      <!-- Project 1 -->
-      <div class="card project-card reveal">
+  <section class="section compact">
+    <div class="container projects-grid">
+      <article class="card project-card reveal">
         <div class="project-header">
           <div>
-            <span class="status-badge completed">Completed</span>
+            <span class="status-badge in-progress">Demo / In progress</span>
+            <h2>PersonaPage - AI Personal Identity Page Demo</h2>
+          </div>
+          <a href="https://personapage-app.vercel.app/" target="_blank" rel="noopener" class="btn btn-icon" aria-label="View PersonaPage live demo"><i class="bi bi-box-arrow-up-right"></i></a>
+        </div>
+        <div class="project-detail">
+          <p><strong>Problem/context:</strong> Students, developers, builders, and freelancers often need to present themselves differently to recruiters, collaborators, networking contacts, or clients.</p>
+          <p><strong>What I built:</strong> An AI-powered personal identity page demo that explores audience-aware personal positioning and profile generation.</p>
+          <p><strong>Focus:</strong> AI-assisted product prototyping, user positioning, profile UX, and deployment.</p>
+        </div>
+        <div class="tech-tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS</span><span class="tag">Supabase</span><span class="tag">OpenAI API</span><span class="tag">Vercel</span></div>
+      </article>
+
+      <article class="card project-card reveal reveal-delay-1">
+        <div class="project-header">
+          <div>
+            <span class="status-badge completed">Completed coursework</span>
             <h2>SaaS Usage Monitoring API</h2>
           </div>
-          <a href="https://github.com/V-Vekaria" target="_blank" class="btn btn-icon" aria-label="View on GitHub">
-            <i class="bi bi-github"></i>
-          </a>
+          <a href="https://github.com/V-Vekaria/COM661-FullStack-Backend" target="_blank" rel="noopener" class="btn btn-icon" aria-label="View SaaS Usage Monitoring API repository"><i class="bi bi-github"></i></a>
         </div>
-        <p>
-          A modular RESTful API for tracking SaaS platform usage, built as COM661 coursework. Implements
-          bcrypt password hashing, token-based authentication, and role-based access control separating
-          admin and standard users. Backed by MongoDB Atlas with a clean, documented endpoint structure.
-        </p>
-        <div class="tech-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Flask</span>
-          <span class="tag">MongoDB</span>
-          <span class="tag">REST API</span>
-          <span class="tag">bcrypt</span>
-          <span class="tag">RBAC</span>
+        <div class="project-detail">
+          <p><strong>Problem/context:</strong> SaaS systems need reliable user management, usage tracking, authentication, and admin-level monitoring flows.</p>
+          <p><strong>What I built:</strong> A Flask and MongoDB REST API coursework project covering users, authentication, monitoring features, and API testing.</p>
+          <p><strong>Focus:</strong> Backend development, REST API design, MongoDB, authentication, role-based access, and Postman testing.</p>
         </div>
-      </div>
+        <div class="tech-tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MongoDB</span><span class="tag">bcrypt</span><span class="tag">REST API</span><span class="tag">Postman</span></div>
+      </article>
 
-      <!-- Project 2 -->
-      <div class="card project-card reveal reveal-delay-1">
+      <article class="card project-card reveal reveal-delay-2">
         <div class="project-header">
-          <div>
-            <span class="status-badge in-progress">In Progress</span>
-            <h2>PersonaPage</h2>
-          </div>
-          <a href="https://personapage-app.vercel.app" target="_blank" class="btn btn-icon" aria-label="View Live">
-            <i class="bi bi-box-arrow-up-right"></i>
-          </a>
+            <div>
+              <span class="status-badge in-progress">Final Year Project</span>
+              <h2>Privacy-Preserving File Transfer Platform</h2>
+            </div>
+          <a href="https://github.com/V-Vekaria/privacy-preserving-file-transfer-platform" target="_blank" rel="noopener" class="btn btn-icon" aria-label="View Privacy-Preserving File Transfer Platform repository"><i class="bi bi-github"></i></a>
         </div>
-        <p>
-          A multi-persona link-in-bio platform for AI product developers and indie builders.
-          Instead of one static profile, PersonaPage lets you create a different link for every
-          room you walk into — founder, developer, consultant. AI adapts your headline, project
-          ordering, and descriptions based on who's reading. Launched at London Tech Week 2026.
-        </p>
-        <div class="tech-tags">
-          <span class="tag">Next.js 15</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">Tailwind CSS</span>
-          <span class="tag">Supabase</span>
-          <span class="tag">OpenAI API</span>
-          <span class="tag">Vercel</span>
+        <div class="project-detail">
+          <p><strong>Problem/context:</strong> Secure file-transfer platforms need useful monitoring insights without exposing file contents.</p>
+          <p><strong>What I am building:</strong> A Final Year Project exploring secure transfer with client-side privacy principles and data-driven anomaly analysis.</p>
+          <p><strong>Focus:</strong> Privacy-preserving systems, secure file transfer, anomaly detection, metadata analysis, and security-aware design.</p>
         </div>
-      </div>
+        <div class="tech-tags"><span class="tag">Python</span><span class="tag">Cryptography principles</span><span class="tag">Data analysis</span><span class="tag">Anomaly detection</span><span class="tag">System design</span></div>
+      </article>
 
-      <!-- Project 3 -->
-      <div class="card project-card reveal reveal-delay-2">
+      <article class="card project-card reveal reveal-delay-3">
         <div class="project-header">
-          <div>
-            <span class="status-badge in-progress">In Progress</span>
-            <h2>Secure File Transfer with Anomaly Detection</h2>
-          </div>
-          <a href="https://github.com/V-Vekaria" target="_blank" class="btn btn-icon" aria-label="View on GitHub">
-            <i class="bi bi-github"></i>
-          </a>
+            <div>
+              <span class="status-badge completed">Live portfolio</span>
+              <h2>Developer Portfolio Website</h2>
+            </div>
+          <a href="https://github.com/V-Vekaria/PortfolioSite" target="_blank" rel="noopener" class="btn btn-icon" aria-label="View PortfolioSite repository"><i class="bi bi-github"></i></a>
         </div>
-        <p>
-          Final Year Computing dissertation (COM668). Designing and implementing a secure file-transfer
-          system that applies statistical anomaly detection to identify unusual transfer patterns. Combines
-          applied cryptography with data-driven threat detection.
-        </p>
-        <div class="tech-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Security</span>
-          <span class="tag">Cryptography</span>
-          <span class="tag">Anomaly Detection</span>
-          <span class="tag">Statistics</span>
+        <div class="project-detail">
+          <p><strong>Problem/context:</strong> I needed a credible, fast portfolio for job hunting, networking, and project conversations.</p>
+          <p><strong>What I built:</strong> A responsive static website with clean pages, a contact form, lightweight JavaScript, and no heavy build dependencies.</p>
+          <p><strong>Focus:</strong> Recruiter-friendly content, responsive design, accessibility basics, and practical deployment.</p>
         </div>
-      </div>
-
-      <!-- Project 4 -->
-      <div class="card project-card reveal reveal-delay-3">
-        <div class="project-header">
-          <div>
-            <span class="status-badge completed">Completed</span>
-            <h2>Developer Portfolio Website</h2>
-          </div>
-          <a href="https://github.com/V-Vekaria" target="_blank" class="btn btn-icon" aria-label="View on GitHub">
-            <i class="bi bi-github"></i>
-          </a>
-        </div>
-        <p>
-          This portfolio site — designed and built from scratch. Dark theme, responsive layout,
-          mobile-first navigation with animated hamburger menu, and a working contact form via Formspree.
-          No frameworks: clean HTML, CSS custom properties, and vanilla JavaScript.
-        </p>
-        <div class="tech-tags">
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">Formspree</span>
-          <span class="tag">Responsive Design</span>
-        </div>
-      </div>
-
+        <div class="tech-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Formspree</span><span class="tag">Netlify</span></div>
+      </article>
     </div>
-
-    <div style="text-align:center;margin-top:2.5rem">
-      <a href="https://github.com/V-Vekaria" target="_blank" class="btn primary">
-        <i class="bi bi-github"></i>&nbsp; View All on GitHub
-      </a>
-    </div>
-  </div>
+  </section>
 </main>
 
 <footer>
   <div class="container footer-inner">
-    <p>© <span id="year"></span> Vishnu Vekaria — All Rights Reserved</p>
+    <p>&copy; <span id="year"></span> Vishnu Vekaria - All Rights Reserved</p>
     <div class="social">
-      <a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" aria-label="Instagram">
-        <i class="bi bi-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" aria-label="LinkedIn">
-        <i class="bi bi-linkedin"></i>
-      </a>
-      <a href="https://github.com/V-Vekaria" target="_blank" aria-label="GitHub">
-        <i class="bi bi-github"></i>
-      </a>
+      <a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/V-Vekaria" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+      <a href="mailto:vishnuvekaria08@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
     </div>
   </div>
 </footer>
