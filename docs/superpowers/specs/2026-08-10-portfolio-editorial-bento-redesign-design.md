@@ -142,10 +142,32 @@ Nothing else on the site animates beyond hover and focus states, and the existin
 
 ## Assets
 
-**The portrait is a hard dependency of the hero.** Required: one photo of Vishnu,
-upper-body, shot against a plain wall, portrait orientation, at least 1200px tall. It does
-*not* need its background removed — the arch mask plus a gradient scrim handles an ordinary
-photo. Saved to `/img/portrait.jpg` with a `.webp` sibling.
+**The portrait is a hard dependency of the hero.**
+
+**Selected: `D:\Vishnu\Image\HITU0589.JPG`** (6000×4000). Chosen from ~13 sampled across
+`D:\Vishnu\Engagement` and `D:\Vishnu\Image`. It is the only one that meets the brief:
+solo, upper body, smart-casual (checked shirt and dark jacket), relaxed expression, eyes to
+camera, and — critically — a **plain dark grey backdrop** that composites onto the
+near-black hero ground with no cut-out needed, just a gradient scrim.
+
+Processing required: crop to portrait above the horizontal curtain skirt at the bottom of
+frame, keep the subject off-centre so the wordmark reads either side, downscale to ~1600px
+tall, export `img/portrait.jpg` plus a `.webp` sibling. The backdrop has a faint vertical
+seam to the subject's left; a tight crop removes it.
+
+Ranked alternates, if this one is rejected:
+
+1. `Image/WhatsApp Image 2024-03-25 at 9.22.05 PM.jpeg` — clean upper body, eyes to camera,
+   plain wall, but ceremonial attire
+2. `Engagement/IMG_2495.JPG` — good framing, but sunglasses hide the eyes
+3. `Engagement/IMG_2494.JPG` — good background, full-length, needs 90° rotation
+
+Rejected: all `IS2_*` group shots, which contain other adults and a child. No third party
+appears on the site.
+
+Tooling: no ImageMagick is available on this machine, and the `convert` on `PATH` is
+Windows' FAT-to-NTFS utility. Cropping is done either by Vishnu manually or by adding
+`sharp` as a devDependency — his call.
 
 **Fallback if no photo is supplied:** the arch renders as a plum-to-black gradient plate
 carrying the initials `VV` in Instrument Serif. The hero must never look broken or show an
@@ -206,8 +228,8 @@ contact.html         restyled, behaviour untouched
 10. Every number on the site — stat tiles, repo counts, years — is one Vishnu has
     confirmed. No placeholder figures survive into a commit.
 
-## Open question
+## Open questions
 
-The portrait. Everything else can proceed without it — the fallback plate ships either way
-— but direction A is materially weaker without a real photo, and that was flagged as its
-one risk when the direction was chosen.
+1. **Crop tooling** — add `sharp` as a devDependency so the crop is scripted and
+   reproducible, or Vishnu crops `HITU0589.JPG` by hand and drops the result in `img/`.
+2. **Stat tile figures** — which numbers Vishnu will stand behind (see the hero section).
