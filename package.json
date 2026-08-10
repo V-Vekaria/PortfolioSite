@@ -4,7 +4,10 @@
   "private": true,
   "description": "Static portfolio website for Vishnu Vekaria.",
   "scripts": {
-    "build": "node scripts/validate-static-site.cjs"
+    "portrait": "node scripts/prepare-portrait.cjs",
+    "build": "node scripts/prepare-portrait.cjs && node scripts/validate-static-site.cjs"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "sharp": "^0.33.0"
+  }
 }

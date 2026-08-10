@@ -1,0 +1,19 @@
+# AI tool installers (impeccable, skills CLI)
+.agents/
+.claude/
+.codex/
+.cursor/
+.gemini/
+skills-lock.json
+
+# local scratch
+.repo-fix/
+.remember/
+
+# node
+node_modules/
+
+# portrait source photo (large original; processed output is committed)
+img/portrait-source.*
+img/portrait-face-source.*
+img/portrait-face-source*

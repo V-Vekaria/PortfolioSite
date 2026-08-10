@@ -3,16 +3,15 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta name="description" content="About Vishnu Vekaria, a Computing Systems student in London building full-stack, backend, and AI product projects."/>
-  <title>About - Vishnu Vekaria</title>
+  <meta name="description" content="About Vishnu Vekaria — final-year Computer Science student at Ulster University London, building full-stack apps and REST APIs in Python and TypeScript."/>
+  <meta name="theme-color" content="#0b0b0c"/>
+  <title>About — Vishnu Vekaria</title>
   <link rel="stylesheet" href="css/style.css"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 <body>
-<canvas id="particleCanvas" aria-hidden="true"></canvas>
-<div class="cursor-glow" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
+<header class="site-header" id="siteHeader">
   <div class="container nav">
     <a class="brand" href="index.html">Vishnu Vekaria</a>
     <button class="hamburger" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
@@ -21,7 +20,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a class="pill" href="contact.html">Let's talk</a></li>
       </ul>
       <div class="mobile" id="mobileMenu" hidden>
         <ul>
@@ -36,97 +35,122 @@
   <div id="navOverlay" class="nav-overlay" hidden></div>
 </header>
 
-<main>
-  <section class="section page-hero">
-    <div class="container narrow reveal">
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container reveal">
       <span class="eyebrow">About</span>
-      <h1>I am Vishnu Vekaria, a BSc (Hons) Computing Systems student at Ulster University based in London.</h1>
-      <p class="muted">I build practical software projects across backend APIs, full-stack demos, AI tools, privacy, and product thinking.</p>
+      <h1>Practical by habit, curious on purpose.</h1>
     </div>
   </section>
 
   <section class="section compact">
-    <div class="container split-grid">
-      <article class="card text-card reveal">
-        <h2>Building, learning, improving</h2>
-        <p>
-          My current focus is building practical software projects that combine full-stack development, backend systems,
-          APIs, AI tools, and product thinking. I am still building, learning,
-          testing ideas, and improving through real projects.
-        </p>
-        <p>
-          My strongest areas at the moment are Python, Flask, REST APIs, MongoDB, JavaScript, frontend development,
-          and AI-assisted product prototyping. I am also developing stronger skills in system design, security, data
-          analysis, and deployment.
-        </p>
-        <p>
-          Alongside university, I work part-time in a customer-facing role, which has helped me build communication,
-          responsibility, teamwork, and problem-solving skills outside of code.
-        </p>
-        <p>
-          I am now looking for opportunities in junior software development, backend/API development, full-stack
-          projects, internships, placements, tech support, and AI/product-related roles.
-        </p>
-      </article>
+    <div class="container about-grid">
 
-      <aside class="card profile-card reveal reveal-delay-1">
-        <div class="avatar-circle">VV</div>
-        <h2>Vishnu Vekaria</h2>
-        <p class="muted">Computing Systems student | AI Product Builder | Full-Stack &amp; AI Projects</p>
-        <div class="profile-list">
-          <span><i class="bi bi-geo-alt"></i> London, UK</span>
-          <span><i class="bi bi-mortarboard"></i> Ulster University</span>
-          <span><i class="bi bi-briefcase"></i> Open to junior, internship, placement, and product opportunities</span>
+      <figure class="about-portrait reveal">
+        <img src="img/portrait-face.webp" alt="Portrait of Vishnu Vekaria"/>
+      </figure>
+
+      <div class="about-prose reveal reveal-delay-1">
+        <h2>The short version</h2>
+        <p>
+          I'm Vishnu — a final-year BSc (Hons) Computer Science student at Ulster University
+          London, graduating September 2026. I build full-stack applications and REST APIs in
+          Python and TypeScript, and my recent work leans into NLP- and LLM-backed features
+          with FastAPI and sentence embeddings.
+        </p>
+        <p>
+          The pattern across my projects is the same instinct: <em>make the system explainable</em>.
+          A tax assistant where a rule engine computes and the LLM only explains. A misinformation
+          tracker that matches claims semantically instead of by keyword. A file-transfer platform
+          that gets its insight from metadata so it never has to read your files.
+        </p>
+
+        <h2>Outside the repos</h2>
+        <p>
+          Through my first two years of the degree I worked the front end at Sainsbury's —
+          September 2024 to April 2026 — where I coordinated teams of five to eight colleagues
+          during peak trading. Running a shop floor while carrying a full-time CS course load
+          teaches you the things a syllabus doesn't: staying organised under pressure, and
+          being the person others check in with when it's busy.
+        </p>
+        <p>
+          I've also taken on freelance work — a portfolio showcase site for a London
+          photographer, and a redesign concept for SKSST Temple focused on clearer navigation
+          while preserving existing community content.
+        </p>
+
+        <h2>Numbers I'll stand behind</h2>
+        <p>
+          Year-2 average of 73.5%, best module Programming in Practice at 87%. Seven original
+          public repos, three deployments live right now. If any of that comes up in an
+          interview, I can open the repo and walk through it.
+        </p>
+
+        <h2>Tools I actually use</h2>
+        <div class="skill-groups">
+          <div class="row">
+            <span>Languages</span>
+            <div class="chips">
+              <span class="chip">Python</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span>
+              <span class="chip">HTML</span><span class="chip">CSS</span>
+            </div>
+          </div>
+          <div class="row">
+            <span>Backend</span>
+            <div class="chips">
+              <span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">REST APIs</span>
+              <span class="chip">JWT auth</span><span class="chip">RBAC</span><span class="chip">bcrypt</span>
+            </div>
+          </div>
+          <div class="row">
+            <span>Frontend</span>
+            <div class="chips">
+              <span class="chip">Next.js</span><span class="chip">React</span><span class="chip">Tailwind CSS</span>
+            </div>
+          </div>
+          <div class="row">
+            <span>Data</span>
+            <div class="chips">
+              <span class="chip">MongoDB Atlas</span><span class="chip">SQLite</span><span class="chip">Supabase</span>
+            </div>
+          </div>
+          <div class="row">
+            <span>Cloud &amp; tools</span>
+            <div class="chips">
+              <span class="chip">Azure Functions</span><span class="chip">Docker</span><span class="chip">Git</span>
+              <span class="chip">Postman</span><span class="chip">Vercel</span><span class="chip">Netlify</span>
+            </div>
+          </div>
         </div>
-        <div class="profile-links">
-          <a href="https://github.com/V-Vekaria" target="_blank" rel="noopener" class="btn"><i class="bi bi-github"></i> GitHub</a>
-          <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener" class="btn primary"><i class="bi bi-linkedin"></i> LinkedIn</a>
-          <a href="mailto:vishnuvekaria08@gmail.com" class="btn"><i class="bi bi-envelope"></i> Email</a>
+
+        <h2>What I'm after</h2>
+        <p>
+          A junior full-stack or backend developer role focused on backend APIs, modern web
+          applications, and practical product delivery. Part-time now, full-time from
+          September 2026.
+        </p>
+        <div class="hero-actions">
+          <a href="projects.html" class="btn primary">See the work
+            <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a href="contact.html" class="btn">Get in touch</a>
         </div>
-      </aside>
+      </div>
+
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-heading reveal">
-        <span class="eyebrow">Skills</span>
-        <h2>Grouped Skills, No Inflated Percentages</h2>
-      </div>
-      <div class="skills-grid reveal">
-        <div class="skill-group">
-          <h3>Languages &amp; Core Tools</h3>
-          <div class="tech-tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">SQL basics</span></div>
-        </div>
-        <div class="skill-group">
-          <h3>Backend &amp; APIs</h3>
-          <div class="tech-tags"><span class="tag">Flask</span><span class="tag">REST APIs</span><span class="tag">MongoDB</span><span class="tag">Authentication</span><span class="tag">Role-based access</span><span class="tag">Postman</span></div>
-        </div>
-        <div class="skill-group">
-          <h3>Frontend &amp; Product Demos</h3>
-          <div class="tech-tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Tailwind CSS</span><span class="tag">Responsive design</span><span class="tag">Vercel</span><span class="tag">Netlify</span></div>
-        </div>
-        <div class="skill-group">
-          <h3>AI &amp; Product Direction</h3>
-          <div class="tech-tags"><span class="tag">OpenAI API</span><span class="tag">Prompt design</span><span class="tag">AI-assisted prototyping</span><span class="tag">Product thinking</span><span class="tag">User positioning</span></div>
-        </div>
-        <div class="skill-group">
-          <h3>Workflow</h3>
-          <div class="tech-tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">Project documentation</span><span class="tag">Testing</span><span class="tag">Deployment basics</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer>
   <div class="container footer-inner">
-    <p>&copy; <span id="year"></span> Vishnu Vekaria - All Rights Reserved</p>
+    <p>&copy; <span id="year"></span> Vishnu Vekaria</p>
     <div class="social">
-      <a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-      <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-      <a href="https://github.com/V-Vekaria" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
-      <a href="mailto:vishnuvekaria08@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+      <a href="https://github.com/V-Vekaria" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:vekariyavishnu63@gmail.com">Email</a>
     </div>
   </div>
 </footer>
