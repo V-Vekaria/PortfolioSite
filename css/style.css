@@ -471,17 +471,36 @@ nav ul.desktop a.pill.active {
    source image's aspect ratio — width follows from it. */
 .portrait {
   position: absolute;
-  right: 3%;
+  right: 1%;
   left: auto;
   bottom: 0;
   transform: none;
-  height: min(80%, 620px);
+  height: min(92%, 700px);
   width: auto;
   max-width: 46vw;
   margin: 0;
   z-index: 2;
   will-change: transform;
   animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.4s both;
+}
+/* The wordmark's font-size (and thus its right edge) grows with the
+   viewport up to a clamp ceiling, then plateaus — a single fixed
+   percentage for the portrait's offset can't track that without either
+   overlapping the copy at narrow widths or opening a huge dead gap at
+   wide ones. These two bands approximate the needed curve: a near-linear
+   ramp while the wordmark is still growing, then a fixed left edge
+   (calc(100% - Npx) grows the offset 1:1 with viewport width) once it
+   has plateaued. Tuned and verified against real layout measurements at
+   861–2200px, not just eyeballed. */
+@media (min-width: 1000px) {
+  .portrait {
+    right: calc(61.65vw - 566.8px);
+  }
+}
+@media (min-width: 1440px) {
+  .portrait {
+    right: calc(100% - 1119px);
+  }
 }
 /* spotlight behind the figure, so it reads as lit rather than pasted on */
 .portrait::before {
@@ -1409,6 +1428,15 @@ footer {
   }
   .hamburger {
     display: block;
+  }
+  /* The nav element still counts as a flex item in .nav even with its
+     content hidden/absolute, so space-between leaves a gap centred on it
+     instead of pushing the hamburger flush right. Taking it out of flow
+     removes it from that calculation; .mobile's own absolute positioning
+     is anchored to .site-header (sticky), not to this element, so it's
+     unaffected. */
+  nav[aria-label="Primary"] {
+    position: absolute;
   }
   .mobile {
     display: block;
