@@ -2,7 +2,7 @@
 
 Personal portfolio website for job hunting, London tech networking, and practical project conversations.
 
-Live site: [vishnupro.netlify.app](https://vishnupro.netlify.app)
+Live site: [vishnuvekaria.com](https://vishnuvekaria.com)
 
 ## Positioning
 
@@ -71,4 +71,4 @@ PortfolioSite/
 ## Author
 
 Vishnu Vekaria  
-[GitHub](https://github.com/V-Vekaria) | [LinkedIn](https://www.linkedin.com/in/vekaria-vishnu/) | [Portfolio](https://vishnupro.netlify.app)
+[GitHub](https://github.com/V-Vekaria) | [LinkedIn](https://www.linkedin.com/in/vekaria-vishnu/) | [Portfolio](https://vishnuvekaria.com)
