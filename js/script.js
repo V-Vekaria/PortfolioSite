@@ -99,7 +99,8 @@ window.addEventListener("resize", () => {
 // ---------- home: highlight the sidebar link for the section in view ----------
 (function initSectionNav() {
   const links = [...document.querySelectorAll(".side-nav a")];
-  if (!links.length || !("IntersectionObserver" in window)) return;
+  const sections = links.map((link) => document.querySelector(link.hash)).filter(Boolean);
+  if (!sections.length) return;
 
   const setActive = (id) =>
     links.forEach((link) => {
@@ -108,15 +109,25 @@ window.addEventListener("resize", () => {
       on ? link.setAttribute("aria-current", "true") : link.removeAttribute("aria-current");
     });
 
-  // a thin band across the middle of the viewport: whichever section crosses it is "current"
-  const observer = new IntersectionObserver(
-    (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
-    { rootMargin: "-45% 0px -50% 0px" }
+  // Current = the last section whose top has passed the middle of the screen; at the very
+  // bottom it's the last section, which may be too short to ever reach the middle.
+  // (An IntersectionObserver band missed sections on fast scrolls and in the gaps.)
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    let current = sections[0];
+    for (const s of sections) if (s.getBoundingClientRect().top < innerHeight / 2) current = s;
+    const atBottom = innerHeight + scrollY >= document.documentElement.scrollHeight - 2;
+    setActive((atBottom ? sections[sections.length - 1] : current).id);
+  };
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) (ticking = true), requestAnimationFrame(update);
+    },
+    { passive: true }
   );
-  links.forEach((link) => {
-    const section = document.querySelector(link.hash);
-    if (section) observer.observe(section);
-  });
+  update();
 })();
 
 // ---------- home: extrude the social icons into 3D ----------

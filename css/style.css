@@ -1096,26 +1096,27 @@ footer {
 }
 
 /* ul ml-1 mt-8 flex items-center · li mr-5 shrink-0 · svg h-6 w-6 */
-.social {
+.side .social {
   display: flex;
   align-items: center;
+  gap: 0; /* spacing comes from li margins; the subpage footer .social sets a gap */
   margin: 2rem 0 0 0.25rem;
   padding: 0;
   list-style: none;
 }
-.social li {
+.side .social li {
   margin-right: 1.25rem;
   flex-shrink: 0;
 }
-.social a {
+.side .social a {
   display: block;
   transition: color 0.15s;
 }
-.social a:hover,
-.social a:focus-visible {
+.side .social a:hover,
+.side .social a:focus-visible {
   color: var(--ink-bright);
 }
-.social svg {
+.side .social svg {
   width: 1.5rem;
   height: 1.5rem;
   display: block;
@@ -1625,7 +1626,7 @@ footer {
 
 /* 3D social icons: script.js stacks six darker copies behind each icon
    (translateZ -0.6px steps), so the resting tilt and hover swing show depth */
-.social a {
+.side .social a {
   perspective: 160px;
 }
 .ico3d {
@@ -1641,16 +1642,46 @@ footer {
   position: absolute;
   inset: 0;
 }
-.social a:hover .ico3d,
-.social a:focus-visible .ico3d {
+.side .social a:hover .ico3d,
+.side .social a:focus-visible .ico3d {
   transform: rotateX(-8deg) rotateY(30deg) translateZ(4px);
 }
-.social a:hover .ico3d svg:last-child,
-.social a:focus-visible .ico3d svg:last-child {
+.side .social a:hover .ico3d svg:last-child,
+.side .social a:focus-visible .ico3d svg:last-child {
   color: var(--accent);
 }
 @media (prefers-reduced-motion: reduce) {
   .ico3d {
+    transition: none;
+  }
+}
+
+/* about page: back link (her /archive "← Brittany Chiang") and a row of closing links */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--accent);
+}
+.back-link svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.25rem;
+  transition: transform 0.15s;
+}
+.back-link:hover svg,
+.back-link:focus-visible svg {
+  transform: translateX(-0.5rem);
+}
+.more-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .back-link svg {
     transition: none;
   }
 }

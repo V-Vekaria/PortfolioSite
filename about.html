@@ -7,160 +7,181 @@
   <meta name="theme-color" content="#1b1120"/>
   <title>About — Vishnu Vekaria</title>
   <link rel="canonical" href="https://vishnuvekaria.com/about">
+  <link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin/>
   <link rel="stylesheet" href="css/style.css"/>
 </head>
-<body>
+<body class="home">
 <a class="skip-link" href="#main">Skip to content</a>
+<div class="spotlight" aria-hidden="true"></div>
 
-<header class="site-header" id="siteHeader">
-  <div class="container nav">
-    <a class="brand" href="index.html">Vishnu Vekaria</a>
-    <button class="hamburger" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
-    <nav aria-label="Primary">
-      <ul class="desktop">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a class="pill" href="contact.html">Let's talk</a></li>
-      </ul>
-      <div class="mobile" id="mobileMenu" hidden>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+<div class="page">
+  <div class="split">
+
+    <header class="side">
+      <div>
+        <figure class="side-portrait">
+          <img src="img/avatar.webp" alt="Portrait of Vishnu Vekaria" width="613" height="600" fetchpriority="high"
+               onerror="this.closest('.side-portrait').hidden = true"/>
+        </figure>
+        <h1><a href="index.html">Vishnu Vekaria</a></h1>
+        <h2 class="side-role">Solutions &amp; Implementation Engineer</h2>
+        <p class="side-pitch">Practical by habit, curious on purpose.</p>
+
+        <nav class="side-nav" aria-label="In-page jump links">
+          <ul>
+            <li><a href="#story"><span class="ind"></span><span class="txt">About</span></a></li>
+            <li><a href="#experience"><span class="ind"></span><span class="txt">Experience</span></a></li>
+            <li><a href="#skills"><span class="ind"></span><span class="txt">Skills</span></a></li>
+            <li><a href="#next"><span class="ind"></span><span class="txt">Looking for</span></a></li>
+          </ul>
+        </nav>
       </div>
-    </nav>
-  </div>
-  <div id="navOverlay" class="nav-overlay" hidden></div>
-</header>
 
-<main id="main">
+      <ul class="social" aria-label="Social media">
+        <li><a href="https://github.com/V-Vekaria" target="_blank" rel="noopener" title="GitHub">
+          <span class="sr-only">GitHub (opens in a new tab)</span>
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a></li>
+        <li><a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener" title="LinkedIn">
+          <span class="sr-only">LinkedIn (opens in a new tab)</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+        </a></li>
+        <li><a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" rel="noopener" title="Instagram">
+          <span class="sr-only">Instagram (opens in a new tab)</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a></li>
+        <li><a href="mailto:vekariyavishnu63@gmail.com" title="Email">
+          <span class="sr-only">Email</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+        </a></li>
+      </ul>
+    </header>
 
-  <section class="page-hero">
-    <div class="container reveal">
-      <span class="eyebrow">About</span>
-      <h1>Practical by habit, curious on purpose.</h1>
-    </div>
-  </section>
+    <main id="main" class="side-main">
 
-  <section class="section compact">
-    <div class="container about-grid">
+      <a class="back-link" href="index.html"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clip-rule="evenodd"/></svg>Home</a>
 
-      <figure class="about-portrait reveal">
-        <img src="img/portrait-face.webp" alt="Portrait of Vishnu Vekaria"/>
-      </figure>
-
-      <div class="about-prose reveal reveal-delay-1">
-        <h2>The short version</h2>
+      <section id="story" class="sec" aria-label="About me">
+        <div class="sec-head"><h2>About</h2></div>
         <p>
-          I'm Vishnu — a BSc (Hons) Computing Systems graduate from Ulster University London.
-          I'm aiming at solutions and implementation engineering for AI products: I build the thing, put it in front
+          I'm Vishnu — a BSc (Hons) Computing Systems graduate from Ulster University London. I'm aiming
+          at solutions and implementation engineering for AI products: I build the thing, put it in front
           of real users, and explain how it works to people who don't care about the code. My stack is
           Python and TypeScript, REST and LLM APIs, and Azure.
         </p>
         <p>
-          <strong>LightGuide</strong> is the project I'd start a conversation with. It's an AI lighting
-          assistant: upload a reference photo and get a lighting diagram and a step-by-step plan to
-          recreate it, labelled honestly as estimates to confirm with a test shot. I opened it to
-          working photographers for feedback, and I built an Arduino sensor prototype
-          (86.5% accuracy on a held-out session) to measure light positions automatically.
+          <a class="inline" href="https://lightguide-studio-ai.lovable.app" target="_blank" rel="noopener">LightGuide</a>
+          is the project I'd start a conversation with. It's an AI lighting assistant: upload a reference
+          photo and get a lighting diagram and a step-by-step plan to recreate it, labelled honestly as
+          estimates to confirm with a test shot. I opened it to working photographers for feedback, and
+          built an Arduino sensor prototype (86.5% accuracy on a held-out session) to measure light
+          positions automatically.
         </p>
         <p>
-          The pattern across my projects is the same instinct: <em>make the system explainable</em>.
-          A tax assistant where a rule engine computes and the LLM only explains. A misinformation
-          tracker that matches claims semantically instead of by keyword. A file-transfer platform
-          that gets its insight from metadata so it never has to read your files.
-        </p>
-
-        <h2>Outside the repos</h2>
-        <p>
-          Alongside the degree I worked at Sainsbury's — September 2024 to April 2026 — where I
-          coordinated teams of five to eight colleagues during peak trading. Since July 2026 I've
-          worked at Mepani News in Kingsbury, advising customers on money transfers and talking
-          suppliers through deals. Both taught me to explain things plainly to people in a hurry.
+          The pattern across my projects is the same instinct: make the system explainable. A tax
+          assistant where a rule engine computes and the LLM only explains. A misinformation tracker that
+          matches claims semantically instead of by keyword. A file-transfer platform that gets its
+          insight from metadata so it never has to read your files.
         </p>
         <p>
-          I've also done freelance client work: a portfolio site for a London photographer, taken
-          from brief through drafts and feedback to launch, and a redesign concept for SKSST Temple
-          focused on clearer navigation while keeping their community content.
-        </p>
-
-        <h2>Numbers I'll stand behind</h2>
-        <p>
-          Year-2 average of 73.5%, best module Programming in Practice at 87%. Seven original
-          public repos, three deployments live right now. If any of that comes up in an
+          Seven original public repos, three deployments live right now. If any of it comes up in an
           interview, I can open the repo and walk through it.
         </p>
+      </section>
 
-        <h2>Tools I actually use</h2>
-        <div class="skill-groups">
-          <div class="row">
-            <span>Languages</span>
-            <div class="chips">
-              <span class="chip">Python</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span>
-              <span class="chip">HTML</span><span class="chip">CSS</span>
+      <section id="experience" class="sec" aria-label="Work and education">
+        <div class="sec-head"><h2>Experience</h2></div>
+        <ol class="cards">
+          <li>
+            <div class="card">
+              <div class="card-bg"></div>
+              <header class="card-when" aria-label="July 2026 to Present">07/2026 — Present</header>
+              <div class="card-body">
+                <h3><span>Mepani News · Kingsbury</span></h3>
+                <p>Advising customers on money transfers and talking suppliers through deals.</p>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <span>Backend</span>
-            <div class="chips">
-              <span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">REST APIs</span>
-              <span class="chip">JWT auth</span><span class="chip">RBAC</span><span class="chip">bcrypt</span>
+          </li>
+          <li>
+            <div class="card">
+              <div class="card-bg"></div>
+              <header class="card-when" aria-label="September 2024 to April 2026">09/2024 — 04/2026</header>
+              <div class="card-body">
+                <h3><span>Sainsbury's</span></h3>
+                <p>Coordinated teams of five to eight colleagues during peak trading, alongside the degree. Both jobs taught me to explain things plainly to people in a hurry.</p>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <span>Frontend</span>
-            <div class="chips">
-              <span class="chip">Next.js</span><span class="chip">React</span><span class="chip">Tailwind CSS</span>
+          </li>
+          <li>
+            <div class="card">
+              <div class="card-bg"></div>
+              <header class="card-when">Freelance</header>
+              <div class="card-body">
+                <h3><span>Client web work</span></h3>
+                <p>A portfolio site for a London photographer, taken from brief through drafts and feedback to launch, and a redesign concept for SKSST Temple focused on clearer navigation while keeping their community content.</p>
+                <ul class="tags" aria-label="Focus areas"><li>Client briefs</li><li>Web design</li><li>Launch</li></ul>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <span>Data</span>
-            <div class="chips">
-              <span class="chip">MongoDB Atlas</span><span class="chip">SQLite</span><span class="chip">Supabase</span>
+          </li>
+          <li>
+            <div class="card">
+              <div class="card-bg"></div>
+              <header class="card-when">Graduated 2026</header>
+              <div class="card-body">
+                <h3><span>BSc (Hons) Computing Systems · Ulster University London</span></h3>
+                <p>Year-2 average 73.5%; best module Programming in Practice at 87%. Final-year project: SecureTransfer.</p>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <span>Cloud &amp; tools</span>
-            <div class="chips">
-              <span class="chip">Azure Functions</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">Arduino / TinyML</span>
-              <span class="chip">Postman</span><span class="chip">Vercel</span><span class="chip">Netlify</span>
-            </div>
-          </div>
-        </div>
+          </li>
+        </ol>
+      </section>
 
-        <h2>What I'm after</h2>
+      <section id="skills" class="sec" aria-label="Tools I use">
+        <div class="sec-head"><h2>Skills</h2></div>
+        <ol class="cards">
+          <li><div class="card"><div class="card-bg"></div><header class="card-when">Languages</header>
+            <div class="card-body"><ul class="tags" aria-label="Languages"><li>Python</li><li>TypeScript</li><li>JavaScript</li><li>HTML</li><li>CSS</li></ul></div></div></li>
+          <li><div class="card"><div class="card-bg"></div><header class="card-when">Backend</header>
+            <div class="card-body"><ul class="tags" aria-label="Backend"><li>FastAPI</li><li>Flask</li><li>REST APIs</li><li>JWT auth</li><li>RBAC</li><li>bcrypt</li></ul></div></div></li>
+          <li><div class="card"><div class="card-bg"></div><header class="card-when">Frontend</header>
+            <div class="card-body"><ul class="tags" aria-label="Frontend"><li>Next.js</li><li>React</li><li>Tailwind CSS</li></ul></div></div></li>
+          <li><div class="card"><div class="card-bg"></div><header class="card-when">Data</header>
+            <div class="card-body"><ul class="tags" aria-label="Data"><li>MongoDB Atlas</li><li>SQLite</li><li>Supabase</li></ul></div></div></li>
+          <li><div class="card"><div class="card-bg"></div><header class="card-when">Cloud and tools</header>
+            <div class="card-body"><ul class="tags" aria-label="Cloud and tools"><li>Azure Functions</li><li>Docker</li><li>Git</li><li>Arduino / TinyML</li><li>Postman</li><li>Vercel</li><li>Netlify</li></ul></div></div></li>
+        </ol>
+      </section>
+
+      <section id="next" class="sec" aria-label="What I'm looking for">
+        <div class="sec-head"><h2>Looking for</h2></div>
         <p>
           A graduate solutions or implementation engineer role (or technical support, onboarding or
-          customer engineer) at an AI or SaaS company, where I can demo, set up and deploy products
-          with customers. Full-time, London or remote.
+          customer engineer) at an AI or SaaS company, where I can demo, set up and deploy products with
+          customers. Full-time, London or remote.
         </p>
-        <div class="hero-actions">
-          <a href="projects.html" class="btn primary">See the work
-            <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-          </a>
-          <a href="contact.html" class="btn">Get in touch</a>
+        <div class="more more-row">
+          <a class="more-link" href="projects.html"><span>See the work<svg class="card-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg></span></a>
+          <a class="more-link" href="contact.html"><span>Get in touch<svg class="card-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg></span></a>
         </div>
-      </div>
+      </section>
 
-    </div>
-  </section>
+    </main>
 
-</main>
-
-<footer>
-  <div class="container footer-inner">
-    <p>&copy; <span id="year"></span> Vishnu Vekaria</p>
-    <div class="social">
-      <a href="https://github.com/V-Vekaria" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" rel="noopener">Instagram</a>
-      <a href="mailto:vekariyavishnu63@gmail.com">Email</a>
+    <div class="egg-wrap">
+      <button class="egg" type="button" id="toTop" title="Back to top">
+        <span class="sr-only">Back to top</span>
+        <span class="cam" aria-hidden="true">
+          <span class="face front"></span><span class="face back"></span>
+          <span class="face left"></span><span class="face right"></span>
+          <span class="face top"></span><span class="face bottom"></span>
+          <span class="hump"></span><span class="shutter"></span><span class="flash"></span>
+          <span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span>
+          <span class="ring r4"></span><span class="glass"></span>
+        </span>
+      </button>
     </div>
   </div>
-</footer>
+</div>
 
 <script type="module" src="js/script.js"></script>
 </body>
