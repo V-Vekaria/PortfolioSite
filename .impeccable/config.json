@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "instrument serif",
+        "createdAt": "2026-11-18T21:58:51.165Z",
+        "reason": "User confirmed Instrument Serif is intentional"
+      },
+      {
+        "rule": "overused-font",
+        "value": "geist",
+        "createdAt": "2026-11-18T21:58:51.269Z",
+        "reason": "User confirmed Geist is intentional"
+      },
+      {
+        "rule": "overused-font",
+        "value": "geist mono",
+        "createdAt": "2026-11-18T21:58:51.384Z",
+        "reason": "User confirmed Geist Mono is intentional"
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "css/style.css"
+        ],
+        "createdAt": "2026-11-18T22:05:47.319Z",
+        "reason": "User confirmed the nav indicator width animation is intentional (matches Brittany Chiang's nav, where the growing line pushes the label)"
+      }
+    ]
+  }
+}

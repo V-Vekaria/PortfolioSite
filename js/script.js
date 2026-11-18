@@ -81,33 +81,70 @@ window.addEventListener("resize", () => {
   items.forEach((item) => observer.observe(item));
 })();
 
-// ---------- header + hero scroll behaviour ----------
-(function initScroll() {
-  const header = document.getElementById("siteHeader");
-  const wordmark = document.getElementById("wordmark");
-  const portrait = document.getElementById("portrait");
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const heroParallax =
-    !reduceMotion && wordmark && portrait && window.matchMedia("(min-width: 861px)").matches;
-
-  let ticking = false;
-
-  function onScroll() {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      const y = window.scrollY;
-      header?.classList.toggle("scrolled", y > 40);
-
-      // the wordmark drifts up faster than the portrait, sliding behind it
-      if (heroParallax && y < window.innerHeight) {
-        wordmark.style.transform = `translateY(calc(-50% - ${(y * 0.28).toFixed(1)}px))`;
-        portrait.style.transform = `translateY(${(y * 0.1).toFixed(1)}px)`;
-      }
-      ticking = false;
-    });
-  }
-
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+// ---------- home: soft spotlight that follows the cursor (mouse/trackpad only) ----------
+(function initSpotlight() {
+  const spot = document.querySelector(".spotlight");
+  if (!spot || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  window.addEventListener(
+    "pointermove",
+    (e) => {
+      spot.style.setProperty("--x", `${e.clientX}px`);
+      spot.style.setProperty("--y", `${e.clientY}px`);
+    },
+    { passive: true }
+  );
 })();
+
+// ---------- home: highlight the sidebar link for the section in view ----------
+(function initSectionNav() {
+  const links = [...document.querySelectorAll(".side-nav a")];
+  if (!links.length || !("IntersectionObserver" in window)) return;
+
+  const setActive = (id) =>
+    links.forEach((link) => {
+      const on = link.hash === `#${id}`;
+      link.classList.toggle("active", on);
+      on ? link.setAttribute("aria-current", "true") : link.removeAttribute("aria-current");
+    });
+
+  // a thin band across the middle of the viewport: whichever section crosses it is "current"
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+    { rootMargin: "-45% 0px -50% 0px" }
+  );
+  links.forEach((link) => {
+    const section = document.querySelector(link.hash);
+    if (section) observer.observe(section);
+  });
+})();
+
+// ---------- home: extrude the social icons into 3D ----------
+// Stacks darker copies of each icon behind it so the tilt shows real depth.
+// Without JS the plain flat icon stays, so nothing is lost.
+(function extrudeIcons() {
+  const depth = ["#7a5a84", "#6a4c74", "#5c4166", "#4f3759", "#432e4c", "#38263f"];
+  document.querySelectorAll(".social svg").forEach((svg) => {
+    const box = document.createElement("span");
+    box.className = "ico3d";
+    svg.replaceWith(box);
+    depth.forEach((color, i) => {
+      const layer = svg.cloneNode(true);
+      layer.classList.add("layer");
+      layer.style.color = color;
+      layer.style.transform = `translateZ(${-(i + 1) * 0.8}px)`;
+      box.append(layer);
+    });
+    box.append(svg); // the real icon goes last, at the front
+  });
+})();
+
+// ---------- home: corner camera goes back to the top ----------
+document.getElementById("toTop")?.addEventListener("click", () => {
+  const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // focusing anything mid smooth-scroll cancels it in Chrome, so move keyboard
+  // focus to the name only once the scroll has finished (no scrollend = no move)
+  const name = document.querySelector(".side h1 a");
+  window.addEventListener("scrollend", () => name?.focus({ preventScroll: true }), { once: true });
+  window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" });
+});

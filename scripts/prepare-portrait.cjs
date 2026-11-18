@@ -313,6 +313,11 @@ async function processSlot({ base, out, label, bust, height }) {
   return true;
 }
 
+// Exported so one-off images (e.g. img/avatar.webp) can reuse the keying without
+// re-running both slots, which would overwrite outputs from local-only sources.
+module.exports = { cutout };
+if (require.main !== module) return;
+
 (async () => {
   const hero = await processSlot({
     base: "portrait-source",

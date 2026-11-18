@@ -17,3 +17,6 @@ node_modules/
 img/portrait-source.*
 img/portrait-face-source.*
 img/portrait-face-source*
+
+# design-checker cache (config.json with the font exceptions is shared)
+.impeccable/hook.cache.json

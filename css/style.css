@@ -1,6 +1,6 @@
 /* ============================================================
    Vishnu Vekaria — portfolio
-   Graphite: monochrome near-black ground, no accent hue.
+   Violet Dusk: deep plum ground, peach-cream accent, mauve fills.
    Instrument Serif display / Geist body / Geist Mono utility.
    ============================================================ */
 
@@ -38,31 +38,32 @@
 /* ---------- tokens ---------- */
 
 :root {
-  /* Graphite. No accent hue — hierarchy comes from weight, scale and spacing,
-     which leaves the portrait and the two status colours as the only hues on
-     the page. Every ambient glow, plate and hairline reads from this block, so
-     changing the palette means changing here and nowhere else. */
-  --ground: #0b0b0c;
-  --ground-2: #141416;
-  --ground-3: #1e1e21;
-  --ground-veil: rgba(11, 11, 12, 0.86);
+  /* Violet Dusk, from the saved palette #502D55 / #935D73 / #F6DBC0 / #F8F4E9,
+     darkened at the ground so body text clears AA. Mauve is only ever a fill
+     or hairline (3.5:1 on ground — too low for text). Every glow, plate and
+     hairline reads from this block, so a palette change happens here only. */
+  --ground: #1b1120;
+  --ground-2: #24172b;
+  --ground-3: #2f1f37;
+  --ground-veil: rgba(27, 17, 32, 0.86);
 
-  --accent: #f2f0ec;
-  --accent-soft: rgba(242, 240, 236, 0.5);
+  --accent: #eaa7c4; /* light rose from the mauve family: a clear hue jump from cream titles on hover */
+  --accent-soft: rgba(234, 167, 196, 0.5);
+  --mauve: #935d73;
+  --mauve-fill: rgba(147, 93, 115, 0.22);
 
-  --glow: rgba(242, 240, 236, 0.06);
-  --glow-deep: rgba(120, 120, 128, 0.16);
-  --plate: rgba(120, 120, 128, 0.16);
-  --featured: #1c1c1f;
-  --edge: rgba(242, 240, 236, 0.14);
-  --stroke-fallback: rgba(242, 240, 236, 0.14);
+  --glow: rgba(147, 93, 115, 0.1);
+  --glow-deep: rgba(147, 93, 115, 0.22);
+  --plate: rgba(147, 93, 115, 0.22);
+  --featured: #2a1a30;
+  --edge: rgba(246, 219, 192, 0.14);
 
-  --ink-bright: #ffffff;
-  --ink: #eceae6;
-  --ink-soft: #9c9a96;
-  --ink-faint: #7f7d79; /* 4.8:1 on --ground; anything darker fails AA at label sizes */
-  --rule: rgba(242, 240, 236, 0.16);
-  --rule-faint: rgba(242, 240, 236, 0.08);
+  --ink-bright: #f8f4e9;
+  --ink: #ece3d8;
+  --ink-soft: #b7a6b3;
+  --ink-faint: #9a8898; /* 4.6:1 on --ground-3, 5.5:1 on --ground; keep at or above AA */
+  --rule: rgba(246, 219, 192, 0.16);
+  --rule-faint: rgba(246, 219, 192, 0.08);
 
   /* semantic state — deliberately the only saturated colour that ships */
   --live: #7fd8a4;
@@ -212,44 +213,6 @@ strong {
   border-bottom: 1px solid var(--rule);
 }
 
-.ticker {
-  display: grid;
-  grid-template-rows: 1fr;
-  overflow: hidden;
-  border-bottom: 1px solid var(--rule-faint);
-  transition: grid-template-rows 0.35s ease, opacity 0.35s ease, border-color 0.35s ease;
-}
-.site-header.scrolled .ticker {
-  grid-template-rows: 0fr;
-  opacity: 0;
-  border-bottom-color: transparent;
-}
-.ticker-track {
-  display: flex;
-  width: max-content;
-  min-height: 0;
-  animation: marquee 30s linear infinite;
-}
-.ticker-track span {
-  display: inline-block;
-  white-space: nowrap;
-  padding: 0.35rem 1.5rem 0.35rem 0;
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--accent-soft);
-}
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 .nav {
   height: var(--header-h);
   display: flex;
@@ -372,277 +335,6 @@ nav ul.desktop a.pill.active {
   z-index: 40;
 }
 
-/* ---------- hero (home) ---------- */
-
-.hero {
-  position: relative;
-  min-height: calc(100svh - var(--header-h) - 30px);
-  overflow: hidden;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -12%;
-  width: 70vw;
-  height: 60%;
-  transform: translateX(-50%);
-  background: radial-gradient(ellipse at 50% 100%, var(--glow-deep), var(--glow) 55%, transparent 75%);
-  pointer-events: none;
-}
-
-/* Wordmark sits left, figure sits right. Centring the figure meant it covered
-   the middle of the name; offsetting both lets the wordmark read in full while
-   the figure still breaks its last letter. */
-.wordmark {
-  position: absolute;
-  left: 4%;
-  right: auto;
-  top: 38%;
-  z-index: 1;
-  transform: translateY(-50%);
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  user-select: none;
-  white-space: nowrap;
-  will-change: transform;
-  animation: wordmarkIn 1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s both;
-}
-.wordmark-first {
-  font-family: var(--mono);
-  font-size: clamp(0.7rem, 1.6vw, 0.95rem);
-  font-weight: 500;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-bottom: clamp(0.4rem, 1.2vw, 0.9rem);
-}
-.wordmark-last {
-  display: block;
-  font-size: clamp(3.2rem, 12.5vw, 11.5rem);
-  font-family: var(--serif);
-  line-height: 0.82;
-  letter-spacing: 0.02em;
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--accent-soft);
-}
-@supports not (-webkit-text-stroke: 1px black) {
-  .wordmark-last {
-    color: var(--stroke-fallback);
-  }
-}
-
-/* Corner labels borrowed from the poster-style hero reference: quiet,
-   mono-set marks that flank the portrait without competing with the copy. */
-.hero-tags {
-  position: absolute;
-  top: clamp(1.75rem, 7vw, 3.25rem);
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-.hero-tags-left {
-  left: 4%;
-  padding-left: 0.9rem;
-  border-left: 1px solid var(--rule);
-  text-align: left;
-}
-.hero-tags-right {
-  right: 3%;
-  padding-right: 0.9rem;
-  border-right: 1px solid var(--rule);
-  text-align: right;
-}
-
-/* The figure is a background-removed cut-out: no frame, no crop.
-   It stands in front of the wordmark, lit from behind and fading into the ground. */
-/* Sized by height so the full figure always fits the hero, whatever the
-   source image's aspect ratio — width follows from it. */
-.portrait {
-  position: absolute;
-  right: 1%;
-  left: auto;
-  bottom: 0;
-  transform: none;
-  height: min(92%, 700px);
-  width: auto;
-  max-width: 46vw;
-  margin: 0;
-  z-index: 2;
-  will-change: transform;
-  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.4s both;
-}
-/* The wordmark's font-size (and thus its right edge) grows with the
-   viewport up to a clamp ceiling, then plateaus — a single fixed
-   percentage for the portrait's offset can't track that without either
-   overlapping the copy at narrow widths or opening a huge dead gap at
-   wide ones. These two bands approximate the needed curve: a near-linear
-   ramp while the wordmark is still growing, then a fixed left edge
-   (calc(100% - Npx) grows the offset 1:1 with viewport width) once it
-   has plateaued. Tuned and verified against real layout measurements at
-   861–2200px, not just eyeballed. */
-@media (min-width: 1000px) {
-  .portrait {
-    right: calc(61.65vw - 566.8px);
-  }
-}
-@media (min-width: 1440px) {
-  .portrait {
-    right: calc(100% - 1119px);
-  }
-}
-/* spotlight behind the figure, so it reads as lit rather than pasted on */
-.portrait::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 6%;
-  width: 150%;
-  aspect-ratio: 1;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    var(--glow) 0%,
-    var(--glow-deep) 38%,
-    transparent 68%
-  );
-  z-index: -1;
-  pointer-events: none;
-}
-.portrait img {
-  height: 100%;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
-  filter: brightness(0.94) contrast(1.06) saturate(0.95)
-    drop-shadow(0 26px 44px rgba(0, 0, 0, 0.62));
-  /* feet dissolve into the page instead of being sliced off */
-  -webkit-mask-image: linear-gradient(180deg, #000 76%, transparent 98%);
-  mask-image: linear-gradient(180deg, #000 76%, transparent 98%);
-}
-/* initials plate shown if the photo is missing */
-.portrait.no-photo {
-  width: clamp(240px, 28vw, 360px);
-  aspect-ratio: 4 / 5;
-  border-radius: 999px 999px 0 0;
-  border: 1px solid var(--rule);
-  border-bottom: 0;
-  overflow: hidden;
-  background: radial-gradient(ellipse at 50% 24%, var(--ground-3), var(--ground-2) 70%);
-}
-.portrait.no-photo img,
-.portrait.no-photo::before {
-  display: none;
-}
-.portrait .plate {
-  display: none;
-}
-.portrait.no-photo .plate {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--serif);
-  font-size: 4rem;
-  color: var(--accent-soft);
-}
-
-.hero-copy {
-  position: absolute;
-  left: 4%;
-  bottom: clamp(1.5rem, 5vw, 3.5rem);
-  width: min(44%, 480px);
-  z-index: 3;
-  animation: fadeUp 0.8s ease 0.7s both;
-}
-.hero-copy .lab {
-  display: block;
-  font-family: var(--mono);
-  font-size: 0.66rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-}
-.hero-copy p {
-  font-size: 0.86rem;
-  line-height: 1.6;
-  color: var(--ink-soft);
-  margin: 0;
-}
-
-.hero-stats {
-  display: flex;
-  gap: clamp(1.2rem, 3vw, 2.4rem);
-  margin-top: 1.4rem;
-}
-.hero-stats div {
-  text-align: left;
-}
-.hero-stats b {
-  display: block;
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 1.7rem;
-  line-height: 1;
-  color: var(--ink-bright);
-  font-variant-numeric: tabular-nums;
-}
-.hero-stats span {
-  font-family: var(--mono);
-  font-size: 0.56rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
-@keyframes wordmarkIn {
-  from {
-    opacity: 0;
-    letter-spacing: 0.09em;
-  }
-  to {
-    opacity: 1;
-    letter-spacing: 0.02em;
-  }
-}
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(9%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* ---------- subpage hero ---------- */
 
 .page-hero {
@@ -656,147 +348,6 @@ nav ul.desktop a.pill.active {
   max-width: 58ch;
   margin-top: 1rem;
   font-size: 1.02rem;
-}
-
-/* ---------- bento ---------- */
-
-.bento {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-}
-
-.tile {
-  position: relative;
-  background: var(--ground-2);
-  border: 1px solid var(--rule-faint);
-  border-radius: var(--radius);
-  padding: 1.15rem 1.25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.8rem;
-  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.25s ease, background 0.25s ease;
-}
-a.tile:hover,
-a.tile:focus-visible {
-  transform: translateY(-3px);
-  border-color: var(--rule);
-  background: var(--ground-3);
-}
-
-.tile .k {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-.tile .v {
-  font-size: 0.95rem;
-  font-weight: 500;
-  line-height: 1.4;
-  color: var(--ink);
-}
-.tile .num {
-  font-family: var(--serif);
-  font-size: 2.6rem;
-  line-height: 1;
-  color: var(--ink-bright);
-  font-variant-numeric: tabular-nums;
-}
-
-.tile.wide {
-  grid-column: span 2;
-}
-
-.tile.featured {
-  grid-column: span 2;
-  grid-row: span 2;
-  background: linear-gradient(150deg, var(--featured) 0%, var(--ground-2) 62%);
-  border-color: var(--edge);
-  padding: 1.5rem;
-}
-.tile.featured .title {
-  font-family: var(--serif);
-  font-size: clamp(1.7rem, 3vw, 2.3rem);
-  color: var(--ink);
-  margin: 0.5rem 0 0.4rem;
-}
-.tile.featured .sub {
-  color: var(--ink-soft);
-  font-size: 0.92rem;
-  max-width: 40ch;
-  margin: 0;
-}
-.thumb {
-  margin-top: 1rem;
-  border: 1px solid var(--rule-faint);
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--ground);
-}
-.thumb .thumb-bar {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 0.4rem 0.6rem;
-  border-bottom: 1px solid var(--rule-faint);
-}
-.thumb .thumb-bar i {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--ground-3);
-}
-.thumb .thumb-bar .url {
-  margin-left: 0.4rem;
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  color: var(--ink-faint);
-  letter-spacing: 0.04em;
-}
-.thumb blockquote {
-  margin: 0;
-  padding: 1.2rem 1.2rem 1.35rem;
-  font-family: var(--serif);
-  font-size: 1.15rem;
-  line-height: 1.3;
-  color: var(--ink-bright);
-}
-
-.tile.identity {
-  grid-row: span 2;
-  padding: 0;
-  overflow: hidden;
-  min-height: 260px;
-  background: radial-gradient(ellipse at 50% 84%, var(--plate), var(--ground-2) 68%);
-}
-/* cover, not contain: a bust crop is wider than this tile, so fitting it would
-   leave dead space above the head. Filling and cropping the sides keeps the face large. */
-.tile.identity img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 12%;
-  filter: brightness(0.94) contrast(1.05) saturate(0.95);
-  -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 97%);
-  mask-image: linear-gradient(180deg, #000 72%, transparent 97%);
-}
-.tile.identity .cap {
-  position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  padding: 2.2rem 1.1rem 0.9rem;
-  background: linear-gradient(180deg, transparent, var(--ground-veil) 62%);
-}
-.tile.identity .cap .v {
-  font-family: var(--serif);
-  font-size: 1.15rem;
-  font-weight: 400;
 }
 
 .status-dot {
@@ -913,27 +464,7 @@ a.tile:focus-visible {
   margin-top: 1.6rem;
 }
 
-/* ---------- bands (looking-for / cta) ---------- */
-
-.band {
-  border-top: 1px solid var(--rule-faint);
-  border-bottom: 1px solid var(--rule-faint);
-  background: var(--ground-2);
-}
-.band .inner {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 3rem;
-  align-items: center;
-  padding: clamp(2.2rem, 5vw, 3.5rem) 0;
-}
-.band h2 {
-  max-width: 20ch;
-}
-.band p {
-  color: var(--ink-soft);
-  margin: 0;
-}
+/* ---------- cta card ---------- */
 
 .cta-card {
   text-align: center;
@@ -1337,9 +868,6 @@ footer {
 /* ---------- responsive ---------- */
 
 @media (max-width: 1000px) {
-  .hero-copy {
-    width: min(48%, 400px);
-  }
   .case-body {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -1347,63 +875,6 @@ footer {
 }
 
 @media (max-width: 860px) {
-  .hero {
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: clamp(2rem, 8vw, 4rem);
-  }
-  .hero-tags {
-    display: none;
-  }
-  .wordmark {
-    position: static;
-    transform: none;
-    order: 1;
-    align-items: center;
-    text-align: center;
-  }
-  .wordmark-last {
-    font-size: clamp(3.4rem, 14vw, 6rem);
-  }
-  .wordmark-first {
-    font-size: 0.7rem;
-  }
-  .portrait {
-    position: static;
-    transform: none;
-    order: 2;
-    margin-top: -1.5rem; /* tuck the figure up into the wordmark */
-    height: auto;
-    width: min(78vw, 360px);
-    max-width: 78vw;
-    animation-name: fadeUp; /* desktop 'rise' ends on translateX(-50%), which mis-centres a static figure */
-  }
-  .portrait img {
-    height: auto;
-    width: 100%;
-  }
-  .portrait.no-photo {
-    margin-top: 1.4rem;
-  }
-  .hero-copy {
-    position: static;
-    order: 3;
-    width: min(100% - 40px, 480px);
-    margin-top: 1.8rem;
-    text-align: center;
-  }
-  .hero-stats {
-    justify-content: center;
-  }
-  .hero-stats div {
-    text-align: center;
-  }
-  .band .inner {
-    grid-template-columns: 1fr;
-    gap: 1.4rem;
-  }
   .about-grid {
     grid-template-columns: 1fr;
   }
@@ -1413,12 +884,6 @@ footer {
   }
   .contact-grid {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 900px) {
-  .bento {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1479,21 +944,6 @@ footer {
 }
 
 @media (max-width: 520px) {
-  .bento {
-    grid-template-columns: 1fr;
-  }
-  /* Every spanning tile must be reset here. A span-2 item in a single-column
-     grid creates an implicit second column sized to content, which overflows
-     the container — this is why span lives in a class, not an inline style. */
-  .tile.featured,
-  .tile.identity,
-  .tile.wide {
-    grid-column: auto;
-    grid-row: auto;
-  }
-  .tile.identity {
-    min-height: 320px;
-  }
   .hero-actions .btn {
     width: 100%;
     justify-content: center;
@@ -1506,25 +956,701 @@ footer {
   html {
     scroll-behavior: auto;
   }
-  .wordmark,
-  .portrait,
-  .hero-copy {
-    animation: none;
-  }
-  .ticker-track {
-    animation: none;
-  }
-  .ticker {
-    transition: none;
-  }
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  .tile,
-  a.tile:hover {
+}
+
+/* ---------- home: layout adapted from brittanychiang.com (credited in footer) ----------
+   Values mirror her Tailwind classes, noted alongside, recoloured to Violet Dusk:
+   slate-900 = --ground, slate-200 = --ink-bright, slate-400 = --ink-soft,
+   slate-500 = --ink-faint, teal-300 = --accent. */
+
+.home {
+  --home-card: rgba(58, 38, 68, 0.5); /* slate-800/50 */
+  --home-pill: rgba(234, 167, 196, 0.1); /* teal-400/10 */
+  --home-ind: #6e5a72; /* slate-600 */
+  --spot: rgba(147, 93, 115, 0.15); /* her rgba(29,78,216,.15) */
+  color: var(--ink-soft);
+  line-height: 1.625; /* leading-relaxed */
+}
+.home ::selection {
+  background: var(--accent);
+  color: var(--ground);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* cursor spotlight: pointer-events-none fixed inset-0 z-30 */
+.spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  background: radial-gradient(600px circle at var(--x, -999px) var(--y, -999px), var(--spot), transparent 80%);
+}
+
+/* mx-auto min-h-screen max-w-screen-xl px-6 py-12 md:px-12 md:py-16 lg:py-0 */
+.page {
+  max-width: 1280px;
+  min-height: 100vh;
+  margin-inline: auto;
+  padding: 48px 24px;
+}
+
+/* header: lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24 */
+.side h1 {
+  font-family: var(--sans);
+  font-size: 2.25rem; /* text-4xl */
+  line-height: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--ink-bright);
+}
+.side-role {
+  margin-top: 0.75rem;
+  font-family: var(--sans);
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--ink-bright);
+}
+.side-pitch {
+  margin: 1rem 0 0;
+  max-width: 20rem; /* max-w-xs */
+  line-height: 1.5;
+}
+
+.side-portrait {
+  position: relative;
+  width: 150px;
+  margin: 0 0 1.25rem;
+  background: radial-gradient(ellipse 60% 55% at 50% 42%, var(--glow-deep), transparent 72%);
+}
+/* img/avatar.webp: _DSC0107.JPG, 4000px square centred on the face (x 1260),
+   wall keyed out with cutout() from scripts/prepare-portrait.cjs */
+.side-portrait img {
+  width: 100%;
+  height: auto;
+  filter: saturate(0.92);
+  /* chin sits at ~80% of the image height: keep everything above it solid */
+  -webkit-mask-image: linear-gradient(180deg, #000 84%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 84%, transparent 100%);
+}
+
+/* nav hidden lg:block · ul mt-16 w-max · a group flex items-center py-3 */
+.side-nav {
+  display: none;
+}
+.side-nav ul {
+  display: block;
+  width: max-content;
+  margin: 4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.side-nav a {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0;
+}
+/* nav-indicator mr-4 h-px w-8 bg-slate-600, hover w-16 bg-slate-200 */
+.side-nav .ind {
+  width: 2rem;
+  height: 1px;
+  margin-right: 1rem;
+  background: var(--home-ind);
+  transition: width 0.15s, background 0.15s;
+}
+.side-nav .txt {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  transition: color 0.15s;
+}
+.side-nav a:hover .ind,
+.side-nav a:focus-visible .ind,
+.side-nav a.active .ind {
+  width: 4rem;
+  background: var(--ink-bright);
+}
+.side-nav a:hover .txt,
+.side-nav a:focus-visible .txt,
+.side-nav a.active .txt {
+  color: var(--ink-bright);
+}
+
+/* ul ml-1 mt-8 flex items-center · li mr-5 shrink-0 · svg h-6 w-6 */
+.social {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0 0 0.25rem;
+  padding: 0;
+  list-style: none;
+}
+.social li {
+  margin-right: 1.25rem;
+  flex-shrink: 0;
+}
+.social a {
+  display: block;
+  transition: color 0.15s;
+}
+.social a:hover,
+.social a:focus-visible {
+  color: var(--ink-bright);
+}
+.social svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+}
+
+/* main pt-24 lg:w-[52%] lg:py-24 */
+.side-main {
+  padding-top: 6rem;
+  padding-bottom: 4rem; /* room under the last section for the corner camera */
+}
+
+/* section mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24 */
+.sec {
+  margin-bottom: 4rem;
+  scroll-margin-top: 4rem;
+}
+.sec > p {
+  margin: 0 0 1rem;
+}
+/* sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur */
+.sec-head {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  width: 100vw;
+  margin: 0 -24px 1rem;
+  padding: 1.25rem 24px;
+  background: rgba(27, 17, 32, 0.75);
+  backdrop-filter: blur(8px);
+}
+.sec-head h2 {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-bright);
+}
+.home a.inline {
+  font-weight: 500;
+  color: var(--ink-bright);
+  transition: color 0.15s;
+}
+.home a.inline:hover,
+.home a.inline:focus-visible {
+  color: var(--accent);
+}
+
+/* ol group/list · li mb-12 */
+.cards {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cards > li {
+  margin-bottom: 3rem;
+}
+/* group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 */
+.card {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  padding-bottom: 0.25rem;
+  transition: opacity 0.15s;
+}
+/* absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md lg:-inset-x-6 lg:block */
+.card-bg {
+  position: absolute;
+  inset: -1rem;
+  z-index: 0;
+  display: none;
+  border-radius: 0.375rem;
+  transition: background 0.15s, box-shadow 0.15s, filter 0.15s;
+}
+/* z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2 */
+.card-when {
+  position: relative;
+  z-index: 10;
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.card-body {
+  position: relative;
+  z-index: 10;
+}
+/* h3 font-medium leading-snug text-slate-200 */
+.card h3 {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.375;
+  font-weight: 500;
+  color: var(--ink-bright);
+  transition: color 0.15s;
+}
+.card-link {
+  display: inline-flex;
+  align-items: baseline;
+  line-height: 1.25;
+}
+/* absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block */
+.card-hit {
+  position: absolute;
+  inset: -0.625rem -1rem;
+  display: none;
+  border-radius: 0.25rem;
+}
+/* inline-block h-4 w-4 shrink-0 transition-transform ml-1 translate-y-px */
+.card-arrow {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  margin-left: 0.25rem;
+  transform: translateY(1px);
+  transition: transform 0.15s;
+  vertical-align: -0.1em;
+}
+.card-link:hover .card-arrow,
+.card-link:focus-visible .card-arrow,
+.more-link:hover .card-arrow,
+.more-link:focus-visible .card-arrow {
+  transform: translate(0.25rem, -0.25rem);
+}
+.card-link:hover,
+.card-link:focus-visible {
+  color: var(--accent);
+}
+/* p mt-2 text-sm leading-normal */
+.card p {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+/* ul mt-2 flex flex-wrap · li mr-1.5 mt-2 · pill rounded-full px-3 py-1 text-xs font-medium leading-5 */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.tags li {
+  margin: 0.5rem 0.375rem 0 0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: var(--home-pill);
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+/* img aspect-video object-cover rounded border-2 border-slate-200/10 group-hover:border-slate-200/30 */
+.card-thumb {
+  position: relative;
+  z-index: 10;
+  width: 200px;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  align-self: start; /* grid items stretch to the row by default, which broke the 16:9 */
+  object-fit: cover;
+  border: 2px solid rgba(248, 244, 233, 0.1);
+  border-radius: 0.25rem;
+  transition: border-color 0.15s;
+}
+.card:hover .card-thumb {
+  border-color: rgba(248, 244, 233, 0.3);
+}
+
+/* mt-12 · inline-flex items-baseline font-semibold leading-tight text-slate-200 */
+.more {
+  margin-top: 3rem;
+}
+.more-link {
+  display: inline-flex;
+  align-items: baseline;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink-bright);
+}
+.more-link:hover,
+.more-link:focus-visible {
+  color: var(--accent);
+}
+
+/* sm (640px) */
+@media (min-width: 640px) {
+  .side h1 {
+    font-size: 3rem;
+    line-height: 1;
+  }
+  .side-role {
+    font-size: 1.25rem;
+  }
+  .card {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 2rem;
+  }
+  .card-when {
+    grid-column: span 2;
+  }
+  .card-body {
+    grid-column: span 6;
+  }
+  .card-project .card-body {
+    order: 2;
+  }
+  .card-thumb {
+    order: 1;
+    grid-column: span 2;
+    width: 100%;
+    transform: translateY(0.25rem);
+  }
+}
+
+/* md (768px) */
+@media (min-width: 768px) {
+  .page {
+    padding: 64px 48px;
+  }
+  .sec {
+    margin-bottom: 6rem;
+  }
+  .sec-head {
+    margin: 0 -48px 1rem;
+    padding: 1.25rem 48px;
+  }
+  .card {
+    gap: 1rem;
+  }
+  .card-hit {
+    display: block;
+    inset: -1rem -1.5rem;
+  }
+}
+
+/* lg (1024px): two columns, sticky header, hover cards, section headings hidden */
+@media (min-width: 1024px) {
+  .page {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .split {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .side {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 48%;
+    max-height: 100vh;
+    padding: 6rem 0;
+  }
+  .side-nav {
+    display: block;
+  }
+  .side-main {
+    width: 52%;
+    padding: 6rem 0;
+  }
+  .sec {
+    margin-bottom: 9rem;
+    scroll-margin-top: 6rem;
+  }
+  /* lg:sr-only: the sidebar nav labels the sections on desktop */
+  .sec-head {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+  .card-bg {
+    display: block;
+    inset: -1rem -1.5rem;
+  }
+  .card:hover .card-bg {
+    background: var(--home-card);
+    box-shadow: inset 0 1px 0 0 rgba(248, 244, 233, 0.1);
+    filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  }
+  /* lg:group-hover/list:opacity-50 lg:hover:!opacity-100 */
+  .cards:hover .card {
+    opacity: 0.5;
+  }
+  .cards:hover .card:hover {
+    opacity: 1;
+  }
+  .card:hover h3,
+  .card:hover .card-link {
+    color: var(--accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .side-nav .ind,
+  .side-nav .txt,
+  .card,
+  .card-bg,
+  .card-arrow {
     transition: none;
-    transform: none;
+  }
+}
+
+/* corner easter egg: a spinning camera (her site has a spinning TARDIS here).
+   absolute bottom-0 right-0 in the page wrapper; lifts on hover; click = back to top */
+.split {
+  position: relative;
+}
+.egg-wrap {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.egg {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.egg:hover,
+.egg:focus-visible {
+  transform: translateY(-0.5rem);
+}
+/* A real 3D camera in CSS: a 44x28x18px body built from six faces, plus a
+   viewfinder hump, shutter, flash and a lens barrel of stacked rings, all in one
+   preserve-3d group that spins on Y. Lit from the top-left: top and front lightest. */
+.egg {
+  perspective: 260px;
+  padding: 1.5rem 0.75rem 1rem;
+}
+.cam {
+  position: relative;
+  display: block;
+  width: 44px;
+  height: 28px;
+  transform-style: preserve-3d;
+  transform: rotateX(-16deg) rotateY(-35deg);
+  animation: cam-spin 6s linear infinite;
+}
+@keyframes cam-spin {
+  from {
+    transform: rotateX(-16deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(-16deg) rotateY(360deg);
+  }
+}
+.cam span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+}
+.cam .face {
+  border: 1px solid rgba(234, 167, 196, 0.45);
+  border-radius: 3px;
+}
+.cam .front,
+.cam .back {
+  width: 44px;
+  height: 28px;
+  margin: -14px 0 0 -22px;
+}
+.cam .front {
+  background: linear-gradient(160deg, #5a3c66, #3a2644);
+  transform: translateZ(9px);
+}
+.cam .back {
+  background: #2a1a33;
+  transform: rotateY(180deg) translateZ(9px);
+}
+/* rear LCD so the back reads as a camera too */
+.cam .back::before {
+  content: "";
+  position: absolute;
+  inset: 5px 15px 5px 5px;
+  border-radius: 2px;
+  background: linear-gradient(150deg, #3a2048, #120a17);
+  border: 1px solid rgba(234, 167, 196, 0.3);
+}
+.cam .left,
+.cam .right {
+  width: 18px;
+  height: 28px;
+  margin: -14px 0 0 -9px;
+  background: #34213e;
+}
+.cam .right {
+  transform: rotateY(90deg) translateZ(22px);
+}
+.cam .left {
+  transform: rotateY(-90deg) translateZ(22px);
+}
+.cam .top,
+.cam .bottom {
+  width: 44px;
+  height: 18px;
+  margin: -9px 0 0 -22px;
+}
+.cam .top {
+  background: #63456f;
+  transform: rotateX(90deg) translateZ(14px);
+}
+.cam .bottom {
+  background: #2a1a33;
+  transform: rotateX(-90deg) translateZ(14px);
+}
+/* viewfinder hump: front plate, top cap (::before) and back plate (::after) */
+.cam .hump {
+  width: 16px;
+  height: 6px;
+  margin: -20px 0 0 -8px;
+  background: #5a3c66;
+  border: 1px solid rgba(234, 167, 196, 0.45);
+  border-bottom: 0;
+  transform-style: preserve-3d;
+  transform: translateZ(5px);
+}
+.cam .hump::before,
+.cam .hump::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  width: 16px;
+  border: 1px solid rgba(234, 167, 196, 0.45);
+}
+.cam .hump::before {
+  top: -6px;
+  height: 10px;
+  background: #6b4c77;
+  transform: translateZ(-5px) rotateX(90deg);
+}
+.cam .hump::after {
+  top: -1px;
+  height: 6px;
+  background: #2a1a33;
+  transform: translateZ(-10px);
+}
+.cam .shutter {
+  width: 8px;
+  height: 8px;
+  margin: -19px 0 0 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: rotateX(90deg) translateZ(1px);
+}
+.cam .flash {
+  width: 8px;
+  height: 5px;
+  margin: -11px 0 0 -19px;
+  border-radius: 1px;
+  background: linear-gradient(#f8f4e9, var(--accent));
+  transform: translateZ(9.5px);
+}
+/* lens barrel: four rings stepping out from the front face, then the glass */
+.cam .ring {
+  width: 20px;
+  height: 20px;
+  margin: -9px 0 0 -10px;
+  border-radius: 50%;
+  background: #24172b;
+  border: 2px solid rgba(234, 167, 196, 0.6);
+}
+.cam .r1 {
+  transform: translateZ(10px);
+}
+.cam .r2 {
+  transform: translateZ(12px);
+}
+.cam .r3 {
+  transform: translateZ(14px);
+}
+.cam .r4 {
+  transform: translateZ(16px);
+  border-color: var(--accent);
+}
+.cam .glass {
+  width: 14px;
+  height: 14px;
+  margin: -6px 0 0 -7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 32%, #fff 0 9%, #a585b3 15%, #3a2048 55%, #0d0712 100%);
+  transform: translateZ(16.5px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .cam {
+    animation: none;
+  }
+}
+
+/* 3D social icons: script.js stacks six darker copies behind each icon
+   (translateZ -0.6px steps), so the resting tilt and hover swing show depth */
+.social a {
+  perspective: 160px;
+}
+.ico3d {
+  position: relative;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  transform-style: preserve-3d;
+  transform: rotateX(14deg) rotateY(-24deg);
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.ico3d svg {
+  position: absolute;
+  inset: 0;
+}
+.social a:hover .ico3d,
+.social a:focus-visible .ico3d {
+  transform: rotateX(-8deg) rotateY(30deg) translateZ(4px);
+}
+.social a:hover .ico3d svg:last-child,
+.social a:focus-visible .ico3d svg:last-child {
+  color: var(--accent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ico3d {
+    transition: none;
   }
 }

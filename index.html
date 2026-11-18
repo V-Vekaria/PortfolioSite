@@ -4,222 +4,225 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <meta name="description" content="Vishnu Vekaria — Solutions and implementation engineer (graduate) in London, taking AI products from idea to real users. Computing Systems graduate who ships AI products and puts them in front of real users: LightGuide, Longhand, REST APIs and LLM features in Python and TypeScript."/>
-  <meta name="theme-color" content="#0b0b0c"/>
+  <meta name="theme-color" content="#1b1120"/>
   <title>Vishnu Vekaria — Solutions &amp; Implementation Engineer (Graduate)</title>
   <link rel="canonical" href="https://vishnuvekaria.com/">
-  <link rel="preload" href="fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin/>
   <link rel="stylesheet" href="css/style.css"/>
 </head>
-<body>
+<body class="home">
 <a class="skip-link" href="#main">Skip to content</a>
+<div class="spotlight" aria-hidden="true"></div>
 
-<header class="site-header" id="siteHeader">
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <span>Solutions &amp; Implementation Engineer — AI Products — London — Open to work —&nbsp;</span>
-      <span>Solutions &amp; Implementation Engineer — AI Products — London — Open to work —&nbsp;</span>
-    </div>
-  </div>
-  <div class="container nav">
-    <a class="brand" href="index.html">Vishnu Vekaria</a>
-    <button class="hamburger" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
-    <nav aria-label="Primary">
-      <ul class="desktop">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a class="pill" href="contact.html">Let's talk</a></li>
-      </ul>
-      <div class="mobile" id="mobileMenu" hidden>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-  <div id="navOverlay" class="nav-overlay" hidden></div>
-</header>
+<div class="page">
+  <div class="split">
 
-<main id="main">
-
-  <section class="hero" aria-label="Introduction">
-    <div class="hero-tags hero-tags-left" aria-hidden="true">
-      <span>Ideas</span><span>People</span><span>Opportunities</span>
-    </div>
-    <div class="hero-tags hero-tags-right" aria-hidden="true">
-      <span>Build</span><span>Learn</span><span>Improve</span>
-    </div>
-
-    <h1 class="wordmark" id="wordmark" aria-label="Vishnu Vekaria">
-      <span class="wordmark-first">Vishnu</span>
-      <span class="wordmark-last">VEKARIA</span>
-    </h1>
-
-    <figure class="portrait" id="portrait">
-      <img src="img/portrait.webp" alt="Portrait of Vishnu Vekaria" fetchpriority="high"
-           onerror="this.closest('.portrait').classList.add('no-photo')"/>
-      <span class="plate" aria-hidden="true">VV</span>
-    </figure>
-
-    <div class="hero-copy">
-      <span class="lab">Solutions &amp; Implementation — AI Products</span>
-      <p>
-        Computing Systems graduate from Ulster University London. I take AI products from idea
-        to real users: LightGuide, an AI lighting assistant tested with working photographers,
-        and Longhand, a deployed AI assistant. Python, TypeScript, REST and LLM APIs, Azure.
-      </p>
-      <div class="hero-stats">
-        <div><b>07</b><span>original repos</span></div>
-        <div><b>03</b><span>live deployments</span></div>
-        <div><b>'26</b><span>graduated</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" aria-label="Selected work">
-    <div class="container">
-      <div class="bento">
-
-        <a class="tile featured reveal" href="https://lightguide-studio-ai.lovable.app" target="_blank" rel="noopener">
-          <div>
-            <span class="k">Featured · <span class="status-dot live">Live</span></span>
-            <p class="title">LightGuide</p>
-            <p class="sub">An AI lighting assistant: upload a reference photo, get a lighting diagram and a step-by-step guide to recreate it. Opened to working photographers for testing.</p>
-          </div>
-          <div>
-            <div class="thumb" aria-hidden="true">
-              <div class="thumb-bar"><i></i><i></i><i></i><span class="url">lightguide-studio-ai.lovable.app</span></div>
-              <blockquote>"Love the lighting from one shoot? Rebuild it next time from a saved plan."</blockquote>
-            </div>
-            <div class="chips" style="margin-top:0.9rem">
-              <span class="chip">AI photo analysis</span><span class="chip">Web prototype</span><span class="chip">Arduino</span>
-              <span class="chip">TinyML</span><span class="chip">User testing</span>
-            </div>
-          </div>
-        </a>
-
-        <figure class="tile identity reveal reveal-delay-1" aria-label="Vishnu Vekaria, London UK">
-          <img src="img/portrait-face.webp" alt="" loading="lazy"/>
-          <figcaption class="cap">
-            <span class="k">London, UK</span>
-            <div class="v">Vishnu Vekaria</div>
-          </figcaption>
+    <header class="side">
+      <div>
+        <figure class="side-portrait">
+          <img src="img/avatar.webp" alt="Portrait of Vishnu Vekaria" width="613" height="600" fetchpriority="high"
+               onerror="this.closest('.side-portrait').hidden = true"/>
         </figure>
+        <h1><a href="index.html">Vishnu Vekaria</a></h1>
+        <h2 class="side-role">Solutions &amp; Implementation Engineer</h2>
+        <p class="side-pitch">I take AI products from idea to real users — and stay for the demo, the API and the feedback.</p>
 
-        <div class="tile reveal reveal-delay-1">
-          <span class="k">Status</span>
-          <span class="status-dot live">Open to work</span>
-          <span class="v" style="font-size:0.8rem;font-weight:400;color:var(--ink-soft)">Full-time · London or remote</span>
-        </div>
-
-        <a class="tile reveal reveal-delay-2" href="https://github.com/V-Vekaria" target="_blank" rel="noopener">
-          <span class="k">Original public repos</span>
-          <span class="num">07</span>
-          <span class="text-link">github.com/V-Vekaria</span>
-        </a>
-
-        <div class="tile reveal">
-          <span class="k">Stack</span>
-          <div class="chips">
-            <span class="chip">Python</span><span class="chip">TypeScript</span><span class="chip">FastAPI</span>
-            <span class="chip">Flask</span><span class="chip">Next.js</span><span class="chip">MongoDB</span>
-            <span class="chip">Azure</span>
-          </div>
-        </div>
-
-        <a class="tile wide reveal reveal-delay-1" href="https://github.com/V-Vekaria/privacy-preserving-file-transfer-platform" target="_blank" rel="noopener">
-          <span class="k">Final-year project · <span class="status-dot live">Completed</span></span>
-          <span class="v">SecureTransfer — client-side encrypted file transfer with metadata-only anomaly detection.</span>
-          <div class="chips">
-            <span class="chip">Python</span><span class="chip">Azure Functions</span><span class="chip">AES-GCM</span>
-          </div>
-        </a>
-
-        <a class="tile reveal reveal-delay-2" href="https://github.com/V-Vekaria/verifypulse" target="_blank" rel="noopener">
-          <span class="k">Now building</span>
-          <span class="status-dot wip">v0.2.0</span>
-          <span class="v" style="font-size:0.85rem">VerifyPulse — multilingual misinformation tracker.</span>
-        </a>
-
-        <a class="tile wide reveal" href="https://amd-hackathon-sepia.vercel.app" target="_blank" rel="noopener">
-          <span class="k">Hackathon · <span class="status-dot live">Live demo</span></span>
-          <span class="v">Longhand — auditable US-expat tax assistant. Rule engine computes, LLM explains. Built in a two-person team for the AMD Developer Hackathon.</span>
-          <div class="chips">
-            <span class="chip">Python</span><span class="chip">Next.js</span><span class="chip">Vercel</span>
-          </div>
-        </a>
-
-        <div class="tile reveal reveal-delay-1">
-          <span class="k">Education</span>
-          <span class="v" style="font-size:0.85rem">BSc (Hons) Computing Systems<br/>Ulster University London</span>
-          <span class="k">Year-2 avg 73.5%</span>
-        </div>
-
-        <div class="tile reveal reveal-delay-2">
-          <span class="k">Elsewhere</span>
-          <div class="tile-link-row" style="flex-direction:column;gap:0.5rem;align-items:flex-start">
-            <a class="text-link" href="https://github.com/V-Vekaria" target="_blank" rel="noopener">GitHub</a>
-            <a class="text-link" href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="text-link" href="projects.html">All projects</a>
-          </div>
-        </div>
-
+        <nav class="side-nav" aria-label="In-page jump links">
+          <ul>
+            <li><a href="#about"><span class="ind"></span><span class="txt">About</span></a></li>
+            <li><a href="#projects"><span class="ind"></span><span class="txt">Projects</span></a></li>
+            <li><a href="#experience"><span class="ind"></span><span class="txt">Experience</span></a></li>
+          </ul>
+        </nav>
       </div>
-    </div>
-  </section>
 
-  <section class="band" aria-label="What I'm looking for">
-    <div class="container inner">
-      <div>
-        <span class="eyebrow">Looking for</span>
-        <h2>A solutions or implementation role where AI products reach real users.</h2>
-      </div>
-      <div>
+      <ul class="social" aria-label="Social media">
+        <li><a href="https://github.com/V-Vekaria" target="_blank" rel="noopener" title="GitHub">
+          <span class="sr-only">GitHub (opens in a new tab)</span>
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a></li>
+        <li><a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener" title="LinkedIn">
+          <span class="sr-only">LinkedIn (opens in a new tab)</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+        </a></li>
+        <li><a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" rel="noopener" title="Instagram">
+          <span class="sr-only">Instagram (opens in a new tab)</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a></li>
+        <li><a href="mailto:vekariyavishnu63@gmail.com" title="Email">
+          <span class="sr-only">Email</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+        </a></li>
+      </ul>
+    </header>
+
+    <main id="main" class="side-main">
+
+      <section id="about" class="sec" aria-label="About me">
+        <div class="sec-head"><h2>About</h2></div>
         <p>
-          Happiest between the product and the customer: demos, discovery, APIs and getting
-          something working in someone else's hands. Available full-time — London or remote.
+          I'm a Computing Systems graduate from Ulster University London who takes AI products from idea
+          to real users. Most recently that's <a class="inline" href="https://lightguide-studio-ai.lovable.app" target="_blank" rel="noopener">LightGuide</a>,
+          an AI lighting assistant I opened to working photographers for testing, and
+          <a class="inline" href="https://amd-hackathon-sepia.vercel.app" target="_blank" rel="noopener">Longhand</a>,
+          a deployed tax assistant built at the AMD Developer Hackathon.
         </p>
-        <div class="hero-actions">
-          <a href="projects.html" class="btn primary">View projects
-            <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-          </a>
-          <a href="about.html" class="btn">About me</a>
+        <p>
+          I'm happiest between the product and the customer: demos, discovery, APIs and getting
+          something working in someone else's hands. Day to day that means Python, TypeScript,
+          REST and LLM APIs, and Azure.
+        </p>
+        <p>
+          Alongside the degree I've worked customer-facing jobs, which taught me to explain things
+          plainly to people in a hurry. I'm open to full-time solutions and implementation roles in
+          London or remote — <a class="inline" href="contact.html">get in touch</a>.
+        </p>
+      </section>
+
+      <section id="projects" class="sec" aria-label="Selected projects">
+        <div class="sec-head"><h2>Projects</h2></div>
+        <ul class="cards">
+          <li>
+            <div class="card card-project">
+              <div class="card-bg"></div>
+              <div class="card-body">
+                <h3><a class="card-link" href="https://lightguide-studio-ai.lovable.app" target="_blank" rel="noopener" aria-label="LightGuide (opens in a new tab)">
+                  <span class="card-hit"></span><span>LightGuide<svg class="card-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg></span>
+                </a></h3>
+                <p>An AI lighting assistant: upload a reference photo, get a lighting diagram and a step-by-step guide to recreate it. Opened to working photographers for hands-on testing; every AI number is labelled an estimate.</p>
+                <ul class="tags" aria-label="Technologies used"><li>AI photo analysis</li><li>Web prototype</li><li>Arduino</li><li>TinyML</li><li>User testing</li></ul>
+              </div>
+              <img class="card-thumb" src="img/projects/lightguide.webp" alt="" width="400" height="225" loading="lazy"/>
+            </div>
+          </li>
+          <li>
+            <div class="card card-project">
+              <div class="card-bg"></div>
+              <div class="card-body">
+                <h3><a class="card-link" href="https://amd-hackathon-sepia.vercel.app" target="_blank" rel="noopener" aria-label="Longhand (opens in a new tab)">
+                  <span class="card-hit"></span><span>Longhand<svg class="card-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg></span>
+                </a></h3>
+                <p>Auditable US-expat tax assistant built in a two-person team for the AMD Developer Hackathon. A rule engine computes, the LLM only explains, so every number stays reproducible.</p>
+                <ul class="tags" aria-label="Technologies used"><li>Python</li><li>Next.js</li><li>Vercel</li><li>Automated testing</li></ul>
+              </div>
+              <img class="card-thumb" src="img/projects/longhand.webp" alt="" width="400" height="225" loading="lazy"/>
+            </div>
+          </li>
+          <li>
+            <div class="card card-project">
+              <div class="card-bg"></div>
+              <div class="card-body">
+                <h3><a class="card-link" href="https://github.com/V-Vekaria/privacy-preserving-file-transfer-platform" target="_blank" rel="noopener" aria-label="SecureTransfer (opens in a new tab)">
+                  <span class="card-hit"></span><span>SecureTransfer<svg class="card-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg></span>
+                </a></h3>
+                <p>Final-year project: client-side encrypted file transfer with metadata-only anomaly detection — the service can flag abuse without ever being able to read a file.</p>
+                <ul class="tags" aria-label="Technologies used"><li>Python</li><li>Azure Functions</li><li>AES-GCM</li><li>Anomaly detection</li></ul>
+              </div>
+              <img class="card-thumb" src="img/projects/securetransfer.webp" alt="" width="400" height="225" loading="lazy"/>
+            </div>
+          </li>
+          <li>
+            <div class="card card-project">
+              <div class="card-bg"></div>
+              <div class="card-body">
+                <h3><a class="card-link" href="https://github.com/V-Vekaria/verifypulse" target="_blank" rel="noopener" aria-label="VerifyPulse (opens in a new tab)">
+                  <span class="card-hit"></span><span>VerifyPulse<svg class="card-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg></span>
+                </a></h3>
+                <p>In development (v0.2.0). A FastAPI service that tracks the same false claim across languages, matched with sentence embeddings instead of keywords.</p>
+                <ul class="tags" aria-label="Technologies used"><li>Python</li><li>FastAPI</li><li>SQLite</li><li>sentence-transformers</li></ul>
+              </div>
+              <img class="card-thumb" src="img/projects/verifypulse.webp" alt="" width="400" height="225" loading="lazy"/>
+            </div>
+          </li>
+          <li>
+            <div class="card card-project">
+              <div class="card-bg"></div>
+              <div class="card-body">
+                <h3><a class="card-link" href="https://personapage-app.vercel.app" target="_blank" rel="noopener" aria-label="PersonaPage (opens in a new tab)">
+                  <span class="card-hit"></span><span>PersonaPage<svg class="card-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg></span>
+                </a></h3>
+                <p>One profile that renders a different version for recruiters, collaborators or clients — audience is an input to rendering, not a copy of the bio.</p>
+                <ul class="tags" aria-label="Technologies used"><li>Next.js</li><li>TypeScript</li><li>Supabase</li><li>OpenAI API</li></ul>
+              </div>
+              <img class="card-thumb" src="img/projects/personapage.webp" alt="" width="400" height="225" loading="lazy"/>
+            </div>
+          </li>
+          <li>
+            <div class="card card-project">
+              <div class="card-bg"></div>
+              <div class="card-body">
+                <h3><a class="card-link" href="https://github.com/V-Vekaria/saas-usage-api" target="_blank" rel="noopener" aria-label="SaaS usage monitoring API (opens in a new tab)">
+                  <span class="card-hit"></span><span>SaaS Usage Monitoring API<svg class="card-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg></span>
+                </a></h3>
+                <p>Flask and MongoDB REST API with JWT auth, role-based access and analytics endpoints, documented in Postman, with an Angular dashboard on top.</p>
+                <ul class="tags" aria-label="Technologies used"><li>Flask</li><li>MongoDB</li><li>JWT</li><li>RBAC</li></ul>
+              </div>
+              <img class="card-thumb" src="img/projects/saas-usage-api.webp" alt="" width="400" height="225" loading="lazy"/>
+            </div>
+          </li>
+        </ul>
+        <div class="more">
+          <a class="more-link" href="projects.html"><span>View Full Project Archive<svg class="card-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg></span></a>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section class="section" aria-label="Contact">
-    <div class="container cta-card">
-      <span class="eyebrow">Contact</span>
-      <h2>Hiring, or just want to talk shop?</h2>
-      <p>LinkedIn is the fastest route. Mention the role or project and I'll come back with something concrete — usually a repo.</p>
-      <div class="hero-actions">
-        <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener" class="btn primary">Connect on LinkedIn
-          <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-        <a href="mailto:vekariyavishnu63@gmail.com" class="btn">Email me</a>
-        <a href="contact.html" class="btn">Contact form</a>
-      </div>
-    </div>
-  </section>
+      <section id="experience" class="sec" aria-label="Work experience">
+        <div class="sec-head"><h2>Experience</h2></div>
+        <ol class="cards">
+          <li>
+            <div class="card">
+              <div class="card-bg"></div>
+              <header class="card-when" aria-label="July 2026 to Present">07/2026 — Present</header>
+              <div class="card-body">
+                <h3><span>Mepani News · Kingsbury</span></h3>
+                <p>Advising customers on money transfers and talking suppliers through deals.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <div class="card-bg"></div>
+              <header class="card-when" aria-label="September 2024 to April 2026">09/2024 — 04/2026</header>
+              <div class="card-body">
+                <h3><span>Sainsbury's</span></h3>
+                <p>Coordinated teams of five to eight colleagues during peak trading, alongside the degree.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <div class="card-bg"></div>
+              <header class="card-when">Graduated 2026</header>
+              <div class="card-body">
+                <h3><span>BSc (Hons) Computing Systems · Ulster University London</span></h3>
+                <p>Year-2 average 73.5%. Final-year project: SecureTransfer.</p>
+                <ul class="tags" aria-label="Focus areas"><li>Python</li><li>Cloud</li><li>Security</li></ul>
+              </div>
+            </div>
+          </li>
+        </ol>
+        <div class="more">
+          <a class="more-link" href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener"><span>View Full History on LinkedIn<svg class="card-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg></span></a>
+        </div>
+      </section>
 
-</main>
+    </main>
 
-<footer>
-  <div class="container footer-inner">
-    <p>&copy; <span id="year"></span> Vishnu Vekaria</p>
-    <div class="social">
-      <a href="https://github.com/V-Vekaria" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/vekaria-vishnu/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.instagram.com/vishnu.vekariya/" target="_blank" rel="noopener">Instagram</a>
-      <a href="mailto:vekariyavishnu63@gmail.com">Email</a>
+    <div class="egg-wrap">
+      <button class="egg" type="button" id="toTop" title="Back to top">
+        <span class="sr-only">Back to top</span>
+        <span class="cam" aria-hidden="true">
+          <span class="face front"></span><span class="face back"></span>
+          <span class="face left"></span><span class="face right"></span>
+          <span class="face top"></span><span class="face bottom"></span>
+          <span class="hump"></span><span class="shutter"></span><span class="flash"></span>
+          <span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span>
+          <span class="ring r4"></span><span class="glass"></span>
+        </span>
+      </button>
     </div>
   </div>
-</footer>
+</div>
 
 <script type="module" src="js/script.js"></script>
 </body>
